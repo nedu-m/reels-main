@@ -10,7 +10,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@fontsource/inter": "^4.5.12",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "jest-environment-jsdom": "^28.1.3",

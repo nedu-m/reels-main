@@ -1,4 +1,3 @@
-import "@fontsource/inter";
 import React from "react";
 import type { AppProps } from "next/app";
 import Theme from "../theme/theme";

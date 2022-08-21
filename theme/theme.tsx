@@ -21,20 +21,17 @@ interface MyTheme extends DefaultTheme {
 
 const theme: MyTheme = {
   colors: {
-    primary: "#0070f3",
-    secondary: "#ffbc40",
+    primary: "",
+    secondary: "",
     black: "#111",
-    white: "#fff",
+    white: "#ffffff",
   },
   breakpoints: {
     sm: "320px",
     md: "768px",
     lg: "1440px",
   },
-
-  fonts: {
-    fontFamily: "Inter, sans-serif",
-  },
+  isOpen: undefined,
 };
 
 export default function Theme({ children }: Props) {

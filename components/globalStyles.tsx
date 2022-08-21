@@ -1,19 +1,18 @@
 import { createGlobalStyle } from "styled-components";
-import "@fontsource/inter";
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
   html,
   body {
-    color: ${({ theme }) => theme.colors.primary};
+    font-family: 'Outfit', sans-serif;
     padding: 0;
     margin: 0;
   }
   a {
     color: inherit;
     text-decoration: none;
-  }
-  * {
-    box-sizing: border-box;
   }
 `;
 

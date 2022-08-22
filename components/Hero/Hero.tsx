@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
+  height: 100vh;
   margin: 4rem auto;
   padding: 0 4rem;
   background-color: #ac0c06;
@@ -9,17 +10,19 @@ const Container = styled.div`
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     padding: 0 0.9rem;
     margin: 1.5rem auto 3rem;
+    height: auto;
   }
 `;
 
 const InnerContainer = styled.div`
-  display: flex;
-  flex-direction: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
   margin: -1.5rem;
   padding: 3.5rem 0 3rem 0;
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 `;
 
@@ -27,16 +30,16 @@ const ContentWrapper = styled.div`
   width: 100%;
   padding: 1.5rem 1.5rem;
   margin-top: 0.5rem;
-  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
-    width: 50%;
-  }
 `;
 
 const ContentListing = styled.div`
   padding: 1.5rem;
+  margin-top: -3rem;
   width: 100%;
   @media (min-width: ${(props) => props.theme.breakpoints.lg}) {
     width: 50%;
+    padding: 1.5rem;
+    margin: 0;
   }
 `;
 

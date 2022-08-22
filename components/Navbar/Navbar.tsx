@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { BiMenu, BiX } from "react-icons/bi";
-import styled from "styled-components";
 import Link from "next/link";
+import styled from "styled-components";
 import { IconContext } from "react-icons";
+import { BiMenu, BiX } from "react-icons/bi";
 
 const Nav = styled.nav`
   display: flex;
@@ -73,7 +73,7 @@ const Menu = styled.ul`
     flex-direction: column;
     width: 100%;
     height: 100vh;
-    top: 70px;
+    top: 69px;
     right: 10px;
     left: ${({ toggle }: any) => (toggle ? "0" : "-100%")};
     transition: all 0.7s ease;
@@ -142,10 +142,6 @@ const NavLinks = [
     href: "/",
   },
 ];
-
-type ToggleProps = {
-  toggle: boolean;
-};
 
 export default function Navbar() {
   const [toggle, setToggle] = useState(false);

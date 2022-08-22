@@ -29,9 +29,8 @@ const theme: MyTheme = {
   breakpoints: {
     sm: "320px",
     md: "768px",
-    lg: "1440px",
+    lg: "1204px",
   },
-  isOpen: undefined,
 };
 
 export default function Theme({ children }: Props) {

@@ -12,20 +12,5 @@ declare module "styled-components" {
       md: string;
       lg: string;
     };
-    isOpen: Interpolation<
-      ThemedStyledProps<
-        Pick<
-          DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-          "key" | keyof HTMLAttributes<HTMLDivElement>
-        > & {
-          ref?:
-            | ((instance: HTMLDivElement | null) => void)
-            | RefObject<HTMLDivElement>
-            | null
-            | undefined;
-        },
-        DefaultTheme
-      >
-    >;
   }
 }

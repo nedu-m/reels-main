@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import CardData from "./data";
 import Image from "next/image";
-import Dragon from "assets/images/dragon.jpg";
-import TopGun from "assets/images/topgun.jpg";
 
-const Container = styled.div`
+const Container = styled.section`
   width: 100%;
   height: 100vh;
   margin: 4rem auto;
@@ -13,7 +11,7 @@ const Container = styled.div`
   overflow: hidden;
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     padding: 0 0.9rem;
-    margin: 1.5rem auto 3rem;
+    margin: 1.5rem auto 0;
     height: auto;
   }
 `;
@@ -139,7 +137,7 @@ const Button = styled.button`
   border: none;
   background-color: white;
   padding: 1rem 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 500;
   line-height: 1.5rem;
   color: ${(props) => props.theme.colors.black};
@@ -147,14 +145,14 @@ const Button = styled.button`
   &:hover {
     background-color: ${(props) => props.theme.colors.black};
     color: white;
-    border: ${(props) => props.theme.colors.white} 1px solid;
+    border: ${(props) => props.theme.colors.white} 3px solid;
   }
 `;
 
 const ButtonSecond = styled(Button)`
   background-color: transparent;
   color: ${(props) => props.theme.colors.white};
-  border: 1px solid ${(props) => props.theme.colors.white};
+  border: 2px solid ${(props) => props.theme.colors.white};
 `;
 
 const Hero = () => {

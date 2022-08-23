@@ -29,7 +29,7 @@ const theme: MyTheme = {
   breakpoints: {
     sm: "320px",
     md: "768px",
-    lg: "1204px",
+    lg: "1024px",
   },
 };
 

@@ -19,7 +19,8 @@
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
       "@theme/*": ["theme/*"],
-    },
+      "@assets/*": ["assets/*"]
+    }
   },
   "include": ["next-env.d.ts", "./jest-setup.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

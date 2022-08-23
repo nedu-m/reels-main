@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import CardData from "./data";
+import Image from "next/image";
+import Dragon from "assets/images/dragon.jpg";
+import TopGun from "assets/images/topgun.jpg";
 
 const Container = styled.div`
   width: 100%;
@@ -18,18 +22,20 @@ const InnerContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
+  gap: 2.7rem;
   margin: -1.5rem;
   padding: 3.5rem 0 3rem 0;
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin-top: -3rem;
+    gap: 0;
   }
 `;
 
 const ContentWrapper = styled.div`
   width: 100%;
   padding: 1.5rem 1.5rem;
-  margin-top: 0.5rem;
 `;
 
 const ContentListing = styled.div`
@@ -37,38 +43,33 @@ const ContentListing = styled.div`
   margin-top: -3rem;
   width: 100%;
   @media (min-width: ${(props) => props.theme.breakpoints.lg}) {
-    width: 50%;
     padding: 1.5rem;
-    margin: 0;
+    margin: 0 0 0 -1.5rem;
   }
 `;
 
 const CardWrapper = styled.div`
-  max-width: max-content;
-  margin: 6rem auto 0;
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    margin: auto;
-  }
+  margin: auto;
 `;
 
 const CardContainer = styled.div`
   display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 0.8rem;
+  grid-template-columns: auto auto auto;
+  gap: 0.5rem;
   margin: -0.75rem -0.75rem 0 -0.75rem;
   @media (max-width: 425px) {
     grid-template-columns: auto;
+    gap: 0;
   }
 `;
 
 const CardContainerInner = styled.div`
   width: 100%;
-  padding: 0.75rem;
+  padding-bottom: 1.5rem;
 `;
 
 const Card = styled.div`
-  width: 16rem;
+  width: 11rem;
   margin: 0 auto;
   border-radius: 1rem;
   background-color: #f3f3f3;
@@ -77,58 +78,27 @@ const Card = styled.div`
     transform: scale(1.1);
     transition: transform 0.9s ease-in-out;
   }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    width: 15rem;
+  }
 `;
 
 const CardContent = styled.div`
   display: flex;
   place-content: center;
   flex-wrap: wrap;
-  margin: -0.5rem;
-`;
-
-const CardContentWrapper = styled.div`
-  width: auto;
-  padding: 0.5rem;
-`;
-
-const CardImage = styled.img`
-  width: 100%;
+  margin: -1rem;
   height: auto;
 `;
 
-const CardTitle = styled.p`
-  color: #202020;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  margin: 0;
-  font-weight: 500;
+const CardImageWrapper = styled.div`
+  padding: 0.9rem 0.9rem 0.7rem;
 `;
 
-const CardYear = styled.div`
-  display: flex;
-  place-content: center;
-  margin-bottom: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  opacity: 0.85;
-  color: #202020;
-`;
-
-const CardGenreWrapper = styled.div`
-  display: grid;
-  place-content: center;
-  border-radius: 9999px;
-  background-color: #e2e0e0;
-  padding: 0.5rem;
-  width: auto;
-`;
-
-const CardGenre = styled.p`
-  margin: 0;
-  font-size: 0.9rem;
-  line-height: 1rem;
-  font-weight: 500;
-  color: ${(props) => props.theme.colors.black};
+const CardImage = styled(Image)`
+  object-fit: cover;
+  border-radius: 0.8rem;
 `;
 
 const ContentTitle = styled.h1`
@@ -211,82 +181,17 @@ const Hero = () => {
         <ContentListing>
           <CardWrapper>
             <CardContainer>
-              <CardContainerInner>
-                <Card>
-                  <CardContent>
-                    <CardContentWrapper>
-                      <CardImage
-                        src="https://shuffle.dev/gradia-assets/images/hero/avatar-circle.png"
-                        alt="movie1"
-                      />
-                    </CardContentWrapper>
-                    <CardContentWrapper>
-                      <CardTitle>The Shawshank Redemption</CardTitle>
-                      <CardYear>2022</CardYear>
-                      <CardGenreWrapper>
-                        <CardGenre>🙌 Action, Fiction</CardGenre>
-                      </CardGenreWrapper>
-                    </CardContentWrapper>
-                  </CardContent>
-                </Card>
-              </CardContainerInner>
-              <CardContainerInner>
-                <Card>
-                  <CardContent>
-                    <CardContentWrapper>
-                      <CardImage
-                        src="https://shuffle.dev/gradia-assets/images/hero/avatar-circle.png"
-                        alt="movie1"
-                      />
-                    </CardContentWrapper>
-                    <CardContentWrapper>
-                      <CardTitle>The Shawshank Redemption</CardTitle>
-                      <CardYear>2021</CardYear>
-                      <CardGenreWrapper>
-                        <CardGenre>🐱‍👤Action, Biopic</CardGenre>
-                      </CardGenreWrapper>
-                    </CardContentWrapper>
-                  </CardContent>
-                </Card>
-              </CardContainerInner>
-              <CardContainerInner>
-                <Card>
-                  <CardContent>
-                    <CardContentWrapper>
-                      <CardImage
-                        src="https://shuffle.dev/gradia-assets/images/hero/avatar-circle.png"
-                        alt="movie1"
-                      />
-                    </CardContentWrapper>
-                    <CardContentWrapper>
-                      <CardTitle>The Shawshank Redemption</CardTitle>
-                      <CardYear>2022</CardYear>
-                      <CardGenreWrapper>
-                        <CardGenre>🐱‍🏍Fiction, Biopic</CardGenre>
-                      </CardGenreWrapper>
-                    </CardContentWrapper>
-                  </CardContent>
-                </Card>
-              </CardContainerInner>
-              <CardContainerInner>
-                <Card>
-                  <CardContent>
-                    <CardContentWrapper>
-                      <CardImage
-                        src="https://shuffle.dev/gradia-assets/images/hero/avatar-circle.png"
-                        alt="movie1"
-                      />
-                    </CardContentWrapper>
-                    <CardContentWrapper>
-                      <CardTitle>The Shawshank Redemption</CardTitle>
-                      <CardYear>1994</CardYear>
-                      <CardGenreWrapper>
-                        <CardGenre>👾Action, Biopic</CardGenre>
-                      </CardGenreWrapper>
-                    </CardContentWrapper>
-                  </CardContent>
-                </Card>
-              </CardContainerInner>
+              {CardData.map((card) => (
+                <CardContainerInner key={card.id}>
+                  <Card>
+                    <CardContent>
+                      <CardImageWrapper>
+                        <CardImage src={card.src} alt={card.alt} />
+                      </CardImageWrapper>
+                    </CardContent>
+                  </Card>
+                </CardContainerInner>
+              ))}
             </CardContainer>
           </CardWrapper>
         </ContentListing>

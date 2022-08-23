@@ -5,6 +5,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    domains: ["shuffle.dev"],
+  },
 }
 
 module.exports = nextConfig

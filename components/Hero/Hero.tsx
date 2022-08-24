@@ -33,7 +33,7 @@ const InnerContainer = styled.div`
 
 const ContentWrapper = styled.div`
   width: 100%;
-  padding: 1.5rem 1.5rem;
+  padding: 3.5rem 1.5rem 1.5rem;
 `;
 
 const ContentListing = styled.div`

@@ -101,6 +101,7 @@ const CardImage = styled(Image)`
 
 const ContentTitle = styled.h1`
   margin-bottom: 3rem;
+  margin-top: auto;
   font-size: 4rem;
   line-height: 0.99;
   font-weight: 700;

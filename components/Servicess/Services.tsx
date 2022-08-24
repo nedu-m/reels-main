@@ -4,7 +4,7 @@ import ServiceData from "./data";
 
 const Container = styled.section`
   background-color: #f4f4f5;
-  padding: 1.5rem 0 10rem 0;
+  padding: 1.5rem 0 3rem 0;
   overflow: hidden;
   position: relative;
   @media (min-width: 768px) {

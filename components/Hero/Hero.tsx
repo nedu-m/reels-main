@@ -42,7 +42,7 @@ const ContentListing = styled.div`
   width: 100%;
   @media (min-width: ${(props) => props.theme.breakpoints.lg}) {
     padding: 1.5rem;
-    margin: 0 0 0 -1.5rem;
+    margin: 2rem 0 0 -1.5rem;
   }
 `;
 

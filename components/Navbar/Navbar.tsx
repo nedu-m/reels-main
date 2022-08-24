@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { IconContext } from "react-icons";
 import { BiMenu, BiX } from "react-icons/bi";
 
+type MenuT = {
+  toggle: boolean;
+};
+
 const Nav = styled.nav`
   display: flex;
   justify-content: center;
@@ -48,7 +52,7 @@ const NavLogo = styled.div`
   }
 `;
 
-const MenuIcon = styled.div`
+const MenuIcon = styled.div<MenuT>`
   display: none;
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     display: flex;
@@ -62,7 +66,7 @@ const MenuIcon = styled.div`
   }
 `;
 
-const Menu = styled.ul`
+const Menu = styled.ul<MenuT>`
   display: flex;
   align-items: center;
   text-align: center;

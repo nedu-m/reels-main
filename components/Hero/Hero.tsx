@@ -5,7 +5,7 @@ import Image from "next/image";
 const Container = styled.section`
   width: 100%;
   height: 100vh;
-  margin: 4rem auto;
+  margin: 4rem auto 0;
   padding: 0 4rem;
   background-color: #ac0c06;
   overflow: hidden;

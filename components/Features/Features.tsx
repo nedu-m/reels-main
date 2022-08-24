@@ -4,7 +4,8 @@ import styled from "styled-components";
 import FeaturesData from "./data";
 
 const Container = styled.section`
-  padding: 4rem 0 5rem 0;
+  background-color: #f4f4f5;
+  padding: 7rem 0 5rem 0;
   overflow: hidden;
 `;
 

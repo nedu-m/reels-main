@@ -8,8 +8,8 @@ import Purple from "assets/images/purple-hearts.jpg";
 const CardData = [
   {
     id: 1,
-    alt: "Top Gun",
-    src: TopGun,
+    alt: "Day Shift",
+    src: Shift,
   },
   {
     id: 2,
@@ -28,8 +28,8 @@ const CardData = [
   },
   {
     id: 5,
-    alt: "Day Shift",
-    src: Shift,
+    alt: "Top Gun",
+    src: TopGun,
   },
   {
     id: 6,

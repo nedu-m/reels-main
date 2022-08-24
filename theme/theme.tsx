@@ -11,6 +11,7 @@ interface MyTheme extends DefaultTheme {
     secondary: string;
     black: string;
     white: string;
+    gray: string;
   };
   breakpoints: {
     sm: string;
@@ -25,6 +26,7 @@ const theme: MyTheme = {
     secondary: "",
     black: "#111",
     white: "#ffffff",
+    gray: "#f4f4f5",
   },
   breakpoints: {
     sm: "320px",

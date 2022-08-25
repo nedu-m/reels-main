@@ -131,7 +131,7 @@ const MenuLink = styled.div`
 const NavLinks = [
   {
     name: "Movies",
-    href: "/",
+    href: "/movies",
   },
   {
     name: "Series",
@@ -160,7 +160,6 @@ export default function Navbar() {
           <NavLogo>
             <Link href="/">Reels</Link>
           </NavLogo>
-          {/* pass toggle as prop to MenuIcon so that typescript knows it is a boolean */}
           <MenuIcon toggle={toggle} onClick={handleToggle}>
             {toggle ? <BiX /> : <BiMenu />}
           </MenuIcon>

@@ -1,8 +1,8 @@
 import { GetServerSideProps } from "next";
-import Image from "next/image";
 import styled from "styled-components";
 import Header from "@components/MoviePage/Header";
 import Popular from "@components/MoviePage/Popular";
+import Card from "@components/MoviePage/Card";
 
 //Define the prop types of the component
 type MovieData = {
@@ -10,13 +10,11 @@ type MovieData = {
     results: {
       id: number;
       title: string;
-      overview: string;
-      release_date: string;
       poster_path: string;
-      genres: {
-        name: string;
-      }[];
-    }[];
+      release_date: string;
+      overview: string;
+      backdrop_path: string;
+    };
   };
 };
 
@@ -25,6 +23,7 @@ export default function Movies({ data }: MovieData) {
     <Container>
       <Header />
       <Popular />
+      <Card data={data} />
     </Container>
   );
 }
@@ -33,15 +32,15 @@ export default function Movies({ data }: MovieData) {
 const { TMBD_POPULAR_URL } = process.env;
 
 //Get Populars movies from TMDB API using GetServerSideProps
-// export const getServerSideProps: GetServerSideProps = async (_context) => {
-//   const res = await fetch(`${TMBD_POPULAR_URL}`);
-//   const data = await res.json();
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// };
+export const getServerSideProps: GetServerSideProps = async (_context) => {
+  const res = await fetch(`${TMBD_POPULAR_URL}`);
+  const data = await res.json();
+  return {
+    props: {
+      data,
+    },
+  };
+};
 
 //Style the component container
 const Container = styled.main`

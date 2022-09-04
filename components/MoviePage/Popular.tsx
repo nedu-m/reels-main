@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
+import Card from "@components/MoviePage/Card";
 import { FiChevronDown } from "react-icons/fi";
 
 type Props = {};
@@ -34,8 +35,8 @@ const Container = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  margin: 1rem 0;
-  padding: 0 3rem;
+  margin-top: 1rem;
+  padding: 0 2.1rem;
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -45,7 +46,7 @@ const Container = styled.section`
   max-width: 100vw;
 
   @media (max-width: 768px) {
-    padding: 0 1rem;
+    padding: 0 0.8rem;
   }
 `;
 

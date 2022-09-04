@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
-import Card from "@components/MoviePage/Card";
 import { FiChevronDown } from "react-icons/fi";
 
 type Props = {};

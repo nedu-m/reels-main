@@ -85,6 +85,23 @@ const ContainerInner = styled.div`
   white-space: nowrap;
   scrollbar-width: none;
   height: auto;
+
+  //Style the scrollbar and make it appealing to the user
+  &::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.red};
+    border-radius: 10px;
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ece3e3;
+    border-radius: 10px;
+    width: 10px;
+  }
 `;
 
 const CardContainer = styled.div`

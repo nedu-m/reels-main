@@ -4,6 +4,7 @@ const Container = styled.section`
   background-color: ${(props) => props.theme.colors.black};
   padding: 6rem 0;
   overflow: hidden;
+  max-width: 100%;
 `;
 
 const FooterWrapper = styled.div`

@@ -87,7 +87,7 @@ const ServiceListingText = styled.h4`
 `;
 
 const ServiceBackground = styled.div`
-  background-image: linear-gradient(98.24deg, #f06630 0%, #f73535 100%);
+  background: linear-gradient(98.24deg, #f06630 0%, #f73535 100%);
   border-radius: 1.5rem;
   width: max-content;
   height: 24rem;

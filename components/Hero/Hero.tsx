@@ -2,6 +2,51 @@ import styled from "styled-components";
 import CardData from "./data";
 import Image from "next/image";
 
+const Hero = () => {
+  return (
+    <Container>
+      <InnerContainer>
+        <ContentWrapper>
+          <ContentListingLettering>Stay in the Know.</ContentListingLettering>
+          <ContentTitle>
+            Instantly download your favorite movies, for free.
+          </ContentTitle>
+          <ButtonWrapper>
+            <ButtonInner>
+              <Button>Explore</Button>
+            </ButtonInner>
+          </ButtonWrapper>
+          <ButtonWrapperSecond>
+            <ButtonInner>
+              <ButtonSecond>Join Our Mail List</ButtonSecond>
+            </ButtonInner>
+          </ButtonWrapperSecond>
+        </ContentWrapper>
+
+        <ContentListing>
+          <CardWrapper>
+            <CardContainer>
+              {CardData.map((card) => (
+                <CardContainerInner key={card.id}>
+                  <Card>
+                    <CardContent>
+                      <CardImageWrapper>
+                        <CardImage src={card.src} alt={card.alt} />
+                      </CardImageWrapper>
+                    </CardContent>
+                  </Card>
+                </CardContainerInner>
+              ))}
+            </CardContainer>
+          </CardWrapper>
+        </ContentListing>
+      </InnerContainer>
+    </Container>
+  );
+};
+
+export default Hero;
+
 const Container = styled.section`
   width: 100%;
   height: 100vh;
@@ -155,48 +200,3 @@ const ButtonSecond = styled(Button)`
   color: ${(props) => props.theme.colors.white};
   border: 2px solid ${(props) => props.theme.colors.white};
 `;
-
-const Hero = () => {
-  return (
-    <Container>
-      <InnerContainer>
-        <ContentWrapper>
-          <ContentListingLettering>Stay in the Know.</ContentListingLettering>
-          <ContentTitle>
-            Instantly download your favorite movies, for free.
-          </ContentTitle>
-          <ButtonWrapper>
-            <ButtonInner>
-              <Button>Explore</Button>
-            </ButtonInner>
-          </ButtonWrapper>
-          <ButtonWrapperSecond>
-            <ButtonInner>
-              <ButtonSecond>Join Our Mail List</ButtonSecond>
-            </ButtonInner>
-          </ButtonWrapperSecond>
-        </ContentWrapper>
-
-        <ContentListing>
-          <CardWrapper>
-            <CardContainer>
-              {CardData.map((card) => (
-                <CardContainerInner key={card.id}>
-                  <Card>
-                    <CardContent>
-                      <CardImageWrapper>
-                        <CardImage src={card.src} alt={card.alt} />
-                      </CardImageWrapper>
-                    </CardContent>
-                  </Card>
-                </CardContainerInner>
-              ))}
-            </CardContainer>
-          </CardWrapper>
-        </ContentListing>
-      </InnerContainer>
-    </Container>
-  );
-};
-
-export default Hero;

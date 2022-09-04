@@ -1,17 +1,18 @@
 import Image from "next/image";
-import { Key } from "react";
 import styled from "styled-components";
 
 type Props = {
   data: {
-    results: {
-      id: number;
-      title: string;
-      poster_path: string;
-      release_date: string;
-      overview: string;
-      backdrop_path: string;
-    };
+    map(
+      arg0: (movie: {
+        id: number;
+        title: string;
+        poster_path: string;
+        release_date: string;
+        overview: string;
+        backdrop_path: string;
+      }) => JSX.Element
+    ): [];
   };
 };
 
@@ -20,22 +21,30 @@ export default function Card({ data }: Props) {
   return (
     <Container>
       <ContainerInner>
-        {/* <CardContainer>
-          <CardImageWrapper>
-            <CardImageInner>
-              <CardImageLink>
-                <CardImage />
-              </CardImageLink>
-            </CardImageInner>
-          </CardImageWrapper>
-        </CardContainer> */}
+        {data.map((movie) => (
+          <CardContainer key={movie.id}>
+            <CardImageWrapper>
+              <CardImageInner>
+                <CardImageLink>
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={movie.title}
+                    width={500}
+                    height={750}
+                  />
+                  <p>{`https://image.tmdb.org/t/p/w500${movie.poster_path}`}</p>
+                </CardImageLink>
+              </CardImageInner>
+              <p>{movie.title}</p>
+            </CardImageWrapper>
+          </CardContainer>
+        ))}
       </ContainerInner>
     </Container>
   );
 }
 
 const Container = styled.div`
-  width: 100%;
   margin-left: 0;
   margin-right: 0;
   position: relative;
@@ -70,11 +79,11 @@ const ContainerInner = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
   width: 100%;
+  max-width: 98.6vw;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
   scrollbar-width: none;
-  min-height: 0;
   height: auto;
 `;
 
@@ -90,12 +99,16 @@ const CardContainer = styled.div`
   width: 150px;
   max-width: 150px;
   background: #fff;
+
+  &:first-child {
+    margin-left: 15px;
+  }
 `;
 
 const CardImageWrapper = styled.div`
   box-shadow: 0 2px 8px rgba(0 0 0 / 10%);
   border-radius: 6px;
-  width: 100%;
+  width: fit-content;
   min-height: calc(150px * 1.5);
   height: calc(150px * 1.5);
   background: #dbdbdb;
@@ -115,9 +128,4 @@ const CardImageLink = styled.a`
   color: #000;
   text-decoration: none;
   font-weight: normal;
-`;
-
-const CardImage = styled.img`
-  width: 100%;
-  height: 100%;
 `;

@@ -7,6 +7,7 @@ import Card from "@components/MoviePage/Card";
 //Define the prop types of the component
 type MovieData = {
   data: {
+    map(arg0: (movie: any) => JSX.Element): [];
     results: {
       id: number;
       title: string;
@@ -37,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (_context) => {
   const data = await res.json();
   return {
     props: {
-      data,
+      data: data.results,
     },
   };
 };

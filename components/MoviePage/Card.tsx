@@ -1,50 +1,6 @@
-import Image from "next/image";
 import styled from "styled-components";
 
-type Props = {
-  data: {
-    map(
-      arg0: (movie: {
-        id: number;
-        title: string;
-        poster_path: string;
-        release_date: string;
-        overview: string;
-        backdrop_path: string;
-      }) => JSX.Element
-    ): [];
-  };
-};
-
-export default function Card({ data }: Props) {
-  console.log(data);
-  return (
-    <Container>
-      <ContainerInner>
-        {data.map((movie) => (
-          <CardContainer key={movie.id}>
-            <CardImageWrapper>
-              <CardImageInner>
-                <CardImageLink>
-                  <Image
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                    width={500}
-                    height={750}
-                  />
-                  <p>{`https://image.tmdb.org/t/p/w500${movie.poster_path}`}</p>
-                </CardImageLink>
-              </CardImageInner>
-              <p>{movie.title}</p>
-            </CardImageWrapper>
-          </CardContainer>
-        ))}
-      </ContainerInner>
-    </Container>
-  );
-}
-
-const Container = styled.div`
+export const Container = styled.div`
   margin-left: 0;
   margin-right: 0;
   position: relative;
@@ -63,14 +19,18 @@ const Container = styled.div`
     position: absolute;
     top: 0;
     right: 0;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      #eeeeee
+    );
     transition: linear 0.3s;
     opacity: 1;
     will-change: auto;
   }
 `;
 
-const ContainerInner = styled.div`
+export const ContainerInner = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: nowrap;
@@ -104,7 +64,7 @@ const ContainerInner = styled.div`
   }
 `;
 
-const CardContainer = styled.div`
+export const CardContainer = styled.div`
   position: relative;
   top: 0;
   left: 0;
@@ -122,7 +82,7 @@ const CardContainer = styled.div`
   }
 `;
 
-const CardImageWrapper = styled.div`
+export const CardImageWrapper = styled.div`
   box-shadow: 0 2px 8px rgba(0 0 0 / 10%);
   border-radius: 6px;
   width: fit-content;
@@ -132,7 +92,7 @@ const CardImageWrapper = styled.div`
   overflow: hidden;
 `;
 
-const CardImageInner = styled.div`
+export const CardImageInner = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
@@ -141,7 +101,7 @@ const CardImageInner = styled.div`
   display: inline-block;
 `;
 
-const CardImageLink = styled.a`
+export const CardImageLink = styled.a`
   color: #000;
   text-decoration: none;
   font-weight: normal;

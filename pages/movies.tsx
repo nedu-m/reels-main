@@ -1,46 +1,56 @@
-import { GetServerSideProps } from "next";
+import Head from "next/head";
 import styled from "styled-components";
+import { GetServerSideProps } from "next";
+import { getTopRatedMovies, getTrendingMovies } from "@pages/api/api";
 import Header from "@components/MoviePage/Header";
-import Popular from "@components/MoviePage/Popular";
-import Card from "@components/MoviePage/Card";
+import SelectButton from "@components/MoviePage/SelectButton";
+import Trending from "@components/MoviePage/Trending";
+import FreeView from "@components/MoviePage/FreeView";
 
 //Define the prop types of the component
-type MovieData = {
-  data: {
-    map(arg0: (movie: any) => JSX.Element): [];
-    results: {
-      id: number;
-      title: string;
-      poster_path: string;
-      release_date: string;
-      overview: string;
-      backdrop_path: string;
-    };
-  };
+type Props = {
+  topRatedMovies: {
+    id: number;
+    title: string;
+    poster_path: string;
+  }[];
+
+  trendingMovies: {
+    id: number;
+    title: string;
+    poster_path: string;
+  }[];
 };
 
-export default function Movies({ data }: MovieData) {
+//Define the component
+export default function Movies({ topRatedMovies, trendingMovies }: Props) {
   return (
     <Container>
+      <Head>
+        <title>Reels - Movies</title>
+      </Head>
       <Header />
-      <PopularContainer>
-        <Popular />
-        <Card data={data} />
-      </PopularContainer>
+      <ContainerInner>
+        <SelectButton />
+        <Trending trendingMovies={trendingMovies} />
+      </ContainerInner>
+      <ContainerInner>
+        <SelectButton />
+        <FreeView topRatedMovies={topRatedMovies} />
+      </ContainerInner>
     </Container>
   );
 }
 
-//Set the TMBD Popular Movies API
-const { TMBD_POPULAR_URL } = process.env;
+//Get the data from the API using getServerSideProps
+export const getServerSideProps: GetServerSideProps = async () => {
+  const topRatedMovies = await getTopRatedMovies();
+  const trendingMovies = await getTrendingMovies();
 
-//Get Populars movies from TMDB API using GetServerSideProps
-export const getServerSideProps: GetServerSideProps = async (_context) => {
-  const res = await fetch(`${TMBD_POPULAR_URL}`);
-  const data = await res.json();
   return {
     props: {
-      data: data.results,
+      topRatedMovies,
+      trendingMovies,
     },
   };
 };
@@ -63,7 +73,7 @@ const Container = styled.main`
   }
 `;
 
-const PopularContainer = styled.section`
+const ContainerInner = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;

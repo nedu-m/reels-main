@@ -1,21 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
 import styled from "styled-components";
-import { FiChevronDown } from "react-icons/fi";
 
 type Props = {};
 
-export default function Popular({}: Props) {
+export default function SelectButton({}: Props) {
   return (
     <Container>
       <ContentWrapper>
         <Content>
           <ContentHeader>
-            <HeaderTitle>What's Popular</HeaderTitle>
+            <HeaderTitle>What's Trending</HeaderTitle>
             <SelectorWrapper>
               <SelectInner>
                 <Selector>
                   <SelectedText>
-                    <Selected name="membership" id="membership">
+                    <Selected name="trendeing" id="trending">
                       <SelectOption value="">Today</SelectOption>
                       <SelectOption value="">This Week</SelectOption>
                     </Selected>

@@ -1,38 +1,45 @@
 /* eslint-disable react/no-unescaped-entities */
+import { useState } from "react";
 import styled from "styled-components";
 
 type Props = {};
 
-export default function SelectButton({}: Props) {
+export function SelectButton({}: Props) {
+  //set header title to trending by default and change when title is passed in
+  const [headerTitle, setHeaderTitle] = useState("Trending");
   return (
-    <Container>
-      <ContentWrapper>
-        <Content>
-          <ContentHeader>
-            <HeaderTitle>What's Trending</HeaderTitle>
-            <SelectorWrapper>
-              <SelectInner>
-                <Selector>
-                  <SelectedText>
-                    <Selected name="trendeing" id="trending">
-                      <SelectOption value="">Today</SelectOption>
-                      <SelectOption value="">This Week</SelectOption>
-                    </Selected>
-                  </SelectedText>
-                </Selector>
-              </SelectInner>
-            </SelectorWrapper>
-          </ContentHeader>
-        </Content>
-      </ContentWrapper>
-    </Container>
+    <>
+      <Container>
+        <HeaderTitle
+          onLoad={() => {
+            setHeaderTitle("Trending");
+          }}
+        >
+          Trending
+        </HeaderTitle>
+
+        <SelectorWrapper>
+          <SelectInner>
+            <Selector>
+              <SelectedText>
+                <Selected name="trending" id="trending">
+                  <SelectOption value="">Today</SelectOption>
+                  <SelectOption value="">This Week</SelectOption>
+                </Selected>
+              </SelectedText>
+            </Selector>
+          </SelectInner>
+        </SelectorWrapper>
+      </Container>
+    </>
   );
 }
 
 const Container = styled.section`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
+  gap: 1rem;
   margin-top: 1rem;
   padding: 0 2.1rem;
   justify-content: center;
@@ -40,35 +47,12 @@ const Container = styled.section`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.black};
-  width: 100%;
+  width: fit-content;
   max-width: 100vw;
 
   @media (max-width: 768px) {
     padding: 0 0.8rem;
   }
-`;
-
-const ContentWrapper = styled.div`
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  align-content: center;
-  width: 100%;
-  padding-top: 1.52rem;
-`;
-
-const Content = styled.div`
-  width: 100%;
-  margin: auto;
-`;
-
-const ContentHeader = styled.div`
-  padding: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: center;
-  gap: 1rem;
 `;
 
 const HeaderTitle = styled.h2`

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { GetServerSideProps } from "next";
 import { getTopRatedMovies, getTrendingMovies } from "@pages/api/api";
 import Header from "@components/MoviePage/Header";
-import SelectButton from "@components/MoviePage/SelectButton";
+import { SelectButton } from "@components/MoviePage/SelectButton";
 import Trending from "@components/MoviePage/Trending";
 import FreeView from "@components/MoviePage/FreeView";
 

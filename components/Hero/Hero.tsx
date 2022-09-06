@@ -121,6 +121,10 @@ const Card = styled.div`
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    width: 10rem;
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.sm}) {
     width: 8.8rem;
   }
 `;

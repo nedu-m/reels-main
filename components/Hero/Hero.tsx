@@ -24,21 +24,19 @@ const Hero = () => {
         </ContentWrapper>
 
         <ContentListing>
-          <CardWrapper>
-            <CardContainer>
-              {CardData.map((card) => (
-                <CardContainerInner key={card.id}>
-                  <Card>
-                    <CardContent>
-                      <CardImageWrapper>
-                        <CardImage src={card.src} alt={card.alt} />
-                      </CardImageWrapper>
-                    </CardContent>
-                  </Card>
-                </CardContainerInner>
-              ))}
-            </CardContainer>
-          </CardWrapper>
+          <CardContainer>
+            {CardData.map((card) => (
+              <CardContainerInner key={card.id}>
+                <Card>
+                  <CardContent>
+                    <CardImageWrapper>
+                      <CardImage src={card.src} alt={card.alt} />
+                    </CardImageWrapper>
+                  </CardContent>
+                </Card>
+              </CardContainerInner>
+            ))}
+          </CardContainer>
         </ContentListing>
       </InnerContainer>
     </Container>
@@ -49,7 +47,7 @@ export default Hero;
 
 const Container = styled.section`
   width: 100%;
-  height: 100vh;
+  height: max-content;
   margin: 4rem auto 0;
   padding: 0 4rem;
   background-color: #ac0c06;
@@ -91,22 +89,22 @@ const ContentListing = styled.div`
   }
 `;
 
-const CardWrapper = styled.div`
-  margin: auto;
-`;
-
 const CardContainer = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 0.5rem;
-  margin: -0.75rem -0.75rem 0 -0.75rem;
-  @media (max-width: 425px) {
-    grid-template-columns: auto;
-    gap: 0;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  gap: 1.5rem;
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem;
   }
 `;
 
 const CardContainerInner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   padding-bottom: 1.5rem;
 `;
@@ -118,12 +116,16 @@ const Card = styled.div`
   background-color: #f3f3f3;
   padding: 0.75rem;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: transform 0.9s ease-in-out;
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    width: 15rem;
+    width: 10rem;
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.sm}) {
+    width: 8.8rem;
   }
 `;
 

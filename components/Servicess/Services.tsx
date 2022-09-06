@@ -24,8 +24,8 @@ const ContainerWrapper = styled.div`
 const ContainerInner = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: -1.5rem;
-  padding: 0 1.15rem;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ServiceWrapper = styled.div`
@@ -90,7 +90,7 @@ const ServiceBackground = styled.div`
   background: linear-gradient(98.24deg, #f06630 0%, #f73535 100%);
   border-radius: 1.5rem;
   width: max-content;
-  height: 24rem;
+  height: 100%;
   margin: 0 auto;
 
   @media (max-width: 425px) {

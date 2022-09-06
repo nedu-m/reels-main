@@ -94,14 +94,17 @@ const CardContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   gap: 1.5rem;
-  margin: auto;
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
+    gap: 1rem;
   }
 `;
 
 const CardContainerInner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   padding-bottom: 1.5rem;
 `;
@@ -113,12 +116,12 @@ const Card = styled.div`
   background-color: #f3f3f3;
   padding: 0.75rem;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: transform 0.9s ease-in-out;
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    width: 15rem;
+    width: 8.8rem;
   }
 `;
 

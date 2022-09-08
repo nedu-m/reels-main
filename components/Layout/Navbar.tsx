@@ -126,7 +126,7 @@ const Menu = styled.ul<MenuT>`
     position: absolute;
     flex-direction: column;
     width: 100%;
-    height: 34.6vh;
+    height: fit-content;
     top: 69px;
     right: 10px;
     left: ${({ toggle }: any) => (toggle ? "0" : "-100%")};

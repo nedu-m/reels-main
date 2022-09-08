@@ -146,6 +146,7 @@ const MenuItem = styled.li`
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     width: fit-content;
     margin: 0;
+    padding-top: 1.5rem;
   }
 `;
 
@@ -174,5 +175,7 @@ const MenuLink = styled.div`
     text-align: center;
     margin: 0;
     height: 0;
+    overflow: hidden;
+    padding: 0 0 1rem;
   }
 `;

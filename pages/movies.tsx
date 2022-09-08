@@ -31,11 +31,11 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
       </Head>
       <Header />
       <ContainerInner>
-        <SelectButton />
+        <SelectButton title={"Trending"} />
         <Trending trendingMovies={trendingMovies} />
       </ContainerInner>
       <ContainerInner>
-        <SelectButton />
+        <SelectButton title={"Top Rated"} />
         <FreeView topRatedMovies={topRatedMovies} />
       </ContainerInner>
     </Container>

@@ -8,6 +8,56 @@ type MenuT = {
   toggle: boolean;
 };
 
+const NavLinks = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Movies",
+    href: "/movies",
+  },
+  {
+    name: "Sitcoms",
+    href: "/",
+  },
+  {
+    name: "TV Shows",
+    href: "/",
+  },
+];
+
+export default function Navbar() {
+  const [toggle, setToggle] = useState(false);
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
+
+  return (
+    <IconContext.Provider value={{ color: "#fff" }}>
+      <Nav>
+        <NavbarContainer>
+          <NavLogo>
+            <Link href="/">Reels</Link>
+          </NavLogo>
+          <MenuIcon toggle={toggle} onClick={handleToggle}>
+            {toggle ? <BiX /> : <BiMenu />}
+          </MenuIcon>
+          <Menu toggle={toggle}>
+            {NavLinks.map((link, index) => (
+              <MenuItem key={index}>
+                <MenuLink onClick={handleToggle}>
+                  <Link href={link.href}>{link.name}</Link>
+                </MenuLink>
+              </MenuItem>
+            ))}
+          </Menu>
+        </NavbarContainer>
+      </Nav>
+    </IconContext.Provider>
+  );
+}
+
 const Nav = styled.nav`
   display: flex;
   justify-content: center;
@@ -76,7 +126,7 @@ const Menu = styled.ul<MenuT>`
     position: absolute;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     top: 69px;
     right: 10px;
     left: ${({ toggle }: any) => (toggle ? "0" : "-100%")};
@@ -84,7 +134,7 @@ const Menu = styled.ul<MenuT>`
     overflow-x: hidden;
     background: #1b1b1f;
     opacity: 1;
-    padding: 0;
+    padding: 0.1rem 0;
   }
 `;
 
@@ -94,8 +144,8 @@ const MenuItem = styled.li`
   margin-left: 15px;
   margin-right: 15px;
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    width: 100%;
-    margin-right: 0;
+    width: fit-content;
+    margin: 0;
   }
 `;
 
@@ -121,59 +171,8 @@ const MenuLink = styled.div`
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     display: block;
-    padding: 0.5rem 0;
-    text-align: left;
-    margin: 0.5rem;
+    text-align: center;
+    margin: 0;
     height: 0;
   }
 `;
-
-const NavLinks = [
-  {
-    name: "Movies",
-    href: "/movies",
-  },
-  {
-    name: "Series",
-    href: "/",
-  },
-  {
-    name: "Sitcoms",
-    href: "/",
-  },
-  {
-    name: "TV Shows",
-    href: "/",
-  },
-];
-
-export default function Navbar() {
-  const [toggle, setToggle] = useState(false);
-  const handleToggle = () => {
-    setToggle(!toggle);
-  };
-
-  return (
-    <IconContext.Provider value={{ color: "#fff" }}>
-      <Nav>
-        <NavbarContainer>
-          <NavLogo>
-            <Link href="/">Reels</Link>
-          </NavLogo>
-          <MenuIcon toggle={toggle} onClick={handleToggle}>
-            {toggle ? <BiX /> : <BiMenu />}
-          </MenuIcon>
-          <Menu toggle={toggle}>
-            {NavLinks.map((link, index) => (
-              <MenuItem key={index}>
-                <MenuLink>
-                  <Link href={link.href}>{link.name}</Link>
-                </MenuLink>
-              </MenuItem>
-            ))}
-          </Menu>
-        </NavbarContainer>
-      </Nav>
-    </IconContext.Provider>
-  );
-}

@@ -46,7 +46,7 @@ export default function Navbar() {
           <Menu toggle={toggle}>
             {NavLinks.map((link, index) => (
               <MenuItem key={index}>
-                <MenuLink>
+                <MenuLink onClick={handleToggle}>
                   <Link href={link.href}>{link.name}</Link>
                 </MenuLink>
               </MenuItem>
@@ -126,7 +126,7 @@ const Menu = styled.ul<MenuT>`
     position: absolute;
     flex-direction: column;
     width: 100%;
-    height: fit-content;
+    height: 34.6vh;
     top: 69px;
     right: 10px;
     left: ${({ toggle }: any) => (toggle ? "0" : "-100%")};
@@ -145,7 +145,7 @@ const MenuItem = styled.li`
   margin-right: 15px;
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     width: fit-content;
-    margin-right: 0;
+    margin: 0;
   }
 `;
 
@@ -171,9 +171,8 @@ const MenuLink = styled.div`
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     display: block;
-    padding: 0.5rem 0;
-    text-align: left;
-    margin: 0.5rem;
+    text-align: center;
+    margin: 0;
     height: 0;
   }
 `;

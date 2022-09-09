@@ -107,13 +107,11 @@ const SearchButton = styled.button`
   justify-content: center;
   align-content: center;
   width: auto;
-  height: 2.88rem;
-  padding: 10px 25px;
+  height: 46.5px;
+  padding: 1rem 25px;
   border: none;
   border-radius: 30px;
   position: absolute;
-  margin-top: -0.2px;
-  margin-bottom: -1px;
   top: 0;
   right: -1.8px;
   color: ${({ theme }) => theme.colors.white};

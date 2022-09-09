@@ -45,8 +45,8 @@ export default function Navbar() {
           </MenuIcon>
           <Menu toggle={toggle}>
             {NavLinks.map((link, index) => (
-              <MenuItem key={index}>
-                <MenuLink onClick={handleToggle}>
+              <MenuItem key={index} onClick={handleToggle}>
+                <MenuLink>
                   <Link href={link.href}>{link.name}</Link>
                 </MenuLink>
               </MenuItem>

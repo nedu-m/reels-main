@@ -1,7 +1,7 @@
-import Head from "next/head";
 import styled from "styled-components";
 import { GetServerSideProps } from "next";
 import { getTopRatedMovies, getTrendingMovies } from "@pages/api/api";
+import Seo from "@components/Seo/Seo";
 import SearchHeader from "@components/MoviePage/SearchHeader";
 import Trending from "@components/MoviePage/Trending";
 import FreeView from "@components/MoviePage/FreeView";
@@ -25,13 +25,10 @@ type Props = {
 export default function Movies({ topRatedMovies, trendingMovies }: Props) {
   return (
     <Container>
-      <Head>
-        <title>Reels - Movies</title>
-        <meta
-          name="description"
-          content="Reels is a movie website for all the latest movie downloads"
-        />
-      </Head>
+      <Seo
+        title="Reels - Movies"
+        description="Reels is a movie website for all the latest movie downloads"
+      />
       <SearchHeader />
       <Trending trendingMovies={trendingMovies} />
       <FreeView topRatedMovies={topRatedMovies} />

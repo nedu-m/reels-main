@@ -35,7 +35,6 @@ export default function FreeView({ topRatedMovies }: Props) {
                       alt={movie.title}
                       width={500}
                       height={750}
-                      priority
                       placeholder="empty"
                     />
                     <p>{`https://image.tmdb.org/t/p/w500${movie.poster_path}`}</p>

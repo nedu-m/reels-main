@@ -2,8 +2,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import { GetServerSideProps } from "next";
 import { getTopRatedMovies, getTrendingMovies } from "@pages/api/api";
-import Header from "@components/MoviePage/Header";
-import { SelectButton } from "@components/MoviePage/SelectButton";
+import SearchHeader from "@components/MoviePage/SearchHeader";
 import Trending from "@components/MoviePage/Trending";
 import FreeView from "@components/MoviePage/FreeView";
 
@@ -22,22 +21,20 @@ type Props = {
   }[];
 };
 
-//Define the component
+//Define the component using component composition
 export default function Movies({ topRatedMovies, trendingMovies }: Props) {
   return (
     <Container>
       <Head>
         <title>Reels - Movies</title>
+        <meta
+          name="description"
+          content="Reels is a movie website for all the latest movie downloads"
+        />
       </Head>
-      <Header />
-      <ContainerInner>
-        <SelectButton title={"Trending"} />
-        <Trending trendingMovies={trendingMovies} />
-      </ContainerInner>
-      <ContainerInner>
-        <SelectButton title={"Top Rated"} />
-        <FreeView topRatedMovies={topRatedMovies} />
-      </ContainerInner>
+      <SearchHeader />
+      <Trending trendingMovies={trendingMovies} />
+      <FreeView topRatedMovies={topRatedMovies} />
     </Container>
   );
 }
@@ -70,24 +67,5 @@ const Container = styled.main`
   @media (max-width: 425px) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
-  }
-`;
-
-const ContainerInner = styled.section`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  margin: 1rem 0;
-  padding: 0 1rem;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.white};
-  color: ${({ theme }) => theme.colors.black};
-  width: 100%;
-  max-width: 100vw;
-
-  @media (max-width: 768px) {
-    padding: 0 1rem;
   }
 `;

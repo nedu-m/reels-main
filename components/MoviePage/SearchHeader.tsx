@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FcSearch } from "react-icons/fc";
 
-const Header = () => {
+const SearchHeader = () => {
   return (
     <HeaderContainer>
       <HeaderWrapper>
@@ -26,7 +26,7 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default SearchHeader;
 
 const HeaderContainer = styled.section`
   display: grid;

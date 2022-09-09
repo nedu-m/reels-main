@@ -11,7 +11,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Reels</title>
+        <title>Reels - Home</title>
+        <meta
+          name="description"
+          content="Reels is a movie website for all the latest movie downloads"
+        />
       </Head>
       <Hero />
       <Features />

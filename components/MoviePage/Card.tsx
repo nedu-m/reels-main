@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const ContentWrapper = styled.div`
   margin-left: 0;
   margin-right: 0;
   position: relative;
@@ -30,7 +30,7 @@ export const Container = styled.div`
   }
 `;
 
-export const ContainerInner = styled.div`
+export const ContentInner = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: nowrap;

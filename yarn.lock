@@ -514,6 +514,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@fontsource/outfit@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/outfit/-/outfit-4.5.9.tgz#588b9bd21c025f863f45adc06dc5bfef960f5db7"
+  integrity sha512-u1NIXYZbNWga36e9bEzJgevs5dGl9GfdEj3j/xnPkiWgMwL8Q2pRBBAEyUkvDeb5VSVdxD0y1lb4r1SgjJeneg==
+
 "@humanwhocodes/config-array@^0.10.4":
   version "0.10.4"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.10.4.tgz"

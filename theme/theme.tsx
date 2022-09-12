@@ -1,4 +1,3 @@
-import React from "react";
 import { ThemeProvider, DefaultTheme } from "styled-components";
 
 interface Props {

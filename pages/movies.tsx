@@ -1,8 +1,13 @@
 import styled from "styled-components";
 import { GetServerSideProps } from "next";
-import { getTopRatedMovies, getTrendingMovies } from "@pages/api/api";
+import {
+  getTopRatedMovies,
+  getTrendingMovies,
+  getMovieQuery,
+} from "@pages/api/api";
 import Seo from "@components/Seo/Seo";
-import SearchHeader from "@components/MoviePage/SearchHeader";
+import MovieHeader from "@components/MoviePage/MovieHeader";
+import Search from "@components/MoviePage/Search";
 import Trending from "@components/MoviePage/Trending";
 import FreeView from "@components/MoviePage/FreeView";
 
@@ -29,7 +34,10 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
         title="Reels - Movies"
         description="Reels is a movie website for all the latest movie downloads"
       />
-      <SearchHeader />
+
+      <MovieHeader />
+      <Search />
+
       <Trending trendingMovies={trendingMovies} />
       <FreeView topRatedMovies={topRatedMovies} />
     </Container>

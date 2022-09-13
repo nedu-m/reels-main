@@ -1,34 +1,5 @@
 import styled from "styled-components";
-import { FcSearch } from "react-icons/fc";
-
-const SearchHeader = () => {
-  return (
-    <HeaderContainer>
-      <HeaderWrapper>
-        <HeaderContent>
-          <HeaderTitle>Welcome.</HeaderTitle>
-          <HeaderSubtitle>
-            Here you can find the latest movies from the world of cinema.
-          </HeaderSubtitle>
-        </HeaderContent>
-        <SearchBarContainer>
-          <SearchBar>
-            <label htmlFor="search">
-              <SearchInput type="text" placeholder="Search..." />
-            </label>
-            <SearchButton type="submit" value="Search">
-              <FcSearch size={31} />
-            </SearchButton>
-          </SearchBar>
-        </SearchBarContainer>
-      </HeaderWrapper>
-    </HeaderContainer>
-  );
-};
-
-export default SearchHeader;
-
-const HeaderContainer = styled.section`
+export const HeaderContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -42,7 +13,7 @@ const HeaderContainer = styled.section`
   }
 `;
 
-const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled.div`
   display: grid;
   width: 100%;
   align-items: center;
@@ -50,30 +21,29 @@ const HeaderWrapper = styled.div`
   align-content: center;
 `;
 
-const HeaderContent = styled.div`
+export const HeaderContent = styled.div`
   width: 100%;
   font-weight: bold;
-  margin-top: -1.5rem;
-  margin: auto;
+  margin: 1.9rem auto auto;
   line-height: 1.3;
+  padding-top: 2.5rem;
 `;
 
-const HeaderTitle = styled.h2`
+export const HeaderTitle = styled.h2`
   font-size: 3.3rem;
 `;
 
-const HeaderSubtitle = styled.h3`
+export const HeaderSubtitle = styled.h3`
   font-size: 1.8rem;
   font-weight: 600;
 `;
 
-//Search bar
-const SearchBarContainer = styled.div`
+export const SearchBarContainer = styled.div`
   width: 100%;
   padding-top: 1.6rem;
 `;
 
-const SearchBar = styled.form`
+export const SearchBar = styled.form`
   margin-top: 0;
   padding: 0;
   position: relative;
@@ -85,7 +55,7 @@ const SearchBar = styled.form`
   }
 `;
 
-const SearchInput = styled.input`
+export const SearchInput = styled.input`
   width: 100%;
   height: 2.875rem;
   line-height: 2.875rem;
@@ -101,7 +71,7 @@ const SearchInput = styled.input`
   }
 `;
 
-const SearchButton = styled.button`
+export const SearchButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;

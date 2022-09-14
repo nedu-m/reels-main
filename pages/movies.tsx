@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import { GetServerSideProps } from "next";
-import {
-  getTopRatedMovies,
-  getTrendingMovies,
-  getMovieQuery,
-} from "@pages/api/api";
+import { getTopRatedMovies, getTrendingMovies } from "@pages/api/api";
 import Seo from "@components/Seo/Seo";
 import MovieHeader from "@components/MoviePage/MovieHeader";
 import Search from "@components/MoviePage/Search";

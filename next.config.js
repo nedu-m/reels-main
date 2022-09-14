@@ -8,6 +8,11 @@ const nextConfig = {
   images: {
     domains: ["image.tmdb.org"],
   },
-}
 
-module.exports = nextConfig
+  //write an utility function to allow process.env to use next_public_ prefix
+  env: {
+    API_KEY: process.env.NEXT_PUBLIC_API_KEY,
+  },
+};
+
+module.exports = nextConfig;

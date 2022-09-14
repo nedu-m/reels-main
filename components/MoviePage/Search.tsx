@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { FcSearch } from "react-icons/fc";
-// import { getMovieQuery } from "@pages/api/api";
 import { useState, useEffect } from "react";
+// import { getMovieQuery } from "@pages/api/api";
+
 import {
   HeaderContainer,
   HeaderWrapper,
@@ -11,13 +12,15 @@ import {
   SearchButton,
 } from "@components/MoviePage/HeaderComponents";
 
-// const getMovieQuery = async (query: string) => {
-//   const res = await fetch(
-//     `https://api.themoviedb.org/3/search/movie?api_key=65f9426e2b5db7e58931f3f837ed5e13&language=en-US&query=${query}&page=1&include_adult=false`
-//   );
-//   const data = await res.json();
-//   return data.results.slice(0, 4);
-// };
+//Set Query API
+const QUERY_API = process.env.NEXT_PUBLIC_QUERY_API;
+
+//Make a Movie Query from TMDB API using async/await and limit the results to 4
+export const getMovieQuery = async (query: string) => {
+  const res = await fetch(`${QUERY_API}${query}&page=1&include_adult=false`);
+  const data = await res.json();
+  return data.results.slice(0, 4);
+};
 
 export default function Search() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -38,7 +41,7 @@ export default function Search() {
   }, [searchResults]);
 
   return (
-    <Container>
+    <SearchContainer>
       <SearchBarWrapper>
         <SearchBarContainer>
           <SearchBar>
@@ -61,11 +64,11 @@ export default function Search() {
           </SearchBar>
         </SearchBarContainer>
       </SearchBarWrapper>
-    </Container>
+    </SearchContainer>
   );
 }
 
-const Container = styled(HeaderContainer)`
+const SearchContainer = styled(HeaderContainer)`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;

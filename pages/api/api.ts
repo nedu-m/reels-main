@@ -21,10 +21,3 @@ export const getTrendingMovies = async () => {
   const data = await res.json();
   return data.results;
 };
-
-// //Make a Movie Query from TMDB API using async/await and limit the results to 4
-// export const getMovieQuery = async (query: string) => {
-//   const res = await fetch(`${QUERY_API}&${query}&page=1&include_adult=false`);
-//   const data = await res.json();
-//   return data.results.slice(0, 4);
-// };

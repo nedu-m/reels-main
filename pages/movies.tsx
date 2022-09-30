@@ -25,6 +25,15 @@ type Props = {
 
 //Define the component using component composition
 export default function Movies({ topRatedMovies, trendingMovies }: Props) {
+  //Set the results of the search query
+  const [searchResults, setSearchResults] = useState<any>([]);
+  //no results found
+  const [notFound, setNotFound] = useState(false);
+
+  const searchData = (data: any) => {
+    setSearchResults(data);
+  };
+
   return (
     <Container>
       <Seo
@@ -34,8 +43,9 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
       />
 
       <MovieHeader />
-      <Search />
+      <Search searchData={searchData} />
       <Trending trendingMovies={trendingMovies} />
+
       <FreeView topRatedMovies={topRatedMovies} />
     </Container>
   );

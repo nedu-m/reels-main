@@ -12,11 +12,11 @@ import {
   SearchButton,
 } from "@components/MoviePage/HeaderComponents";
 
-export default function Search() {
+export default function Search({ searchData }: any) {
   //Set the state of the search query
   const [searchQuery, setSearchQuery] = useState("");
   //Set the state of the movie query
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchMovie, setSearchMovie] = useState([]);
   //if searchQuery is not found, set state for not found
   const [notFound, setNotFound] = useState(false);
 
@@ -24,17 +24,13 @@ export default function Search() {
   const handleSearch = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const results = await getMovieQuery(searchQuery);
-    setSearchResults(results);
+    setSearchMovie(results);
   };
 
-  //Notify the user if the search query is not found
+  //Pass the search results to the parent component
   useEffect(() => {
-    if (searchResults.length === 0) {
-      setNotFound(true);
-    } else {
-      setNotFound(false);
-    }
-  }, [searchResults]);
+    searchData(searchMovie);
+  }, [searchData, searchMovie]);
 
   //If nothing is typed in the search bar, diable the search button
   const isDisabled = searchQuery.length === 0;
@@ -45,10 +41,6 @@ export default function Search() {
       handleSearch(e);
     }
   };
-
-  useEffect(() => {
-    console.log(searchResults);
-  }, [searchResults]);
 
   return (
     <SearchContainer>

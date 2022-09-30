@@ -95,3 +95,31 @@ export const SearchButton = styled.button`
     box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.3);
   }
 `;
+
+export const SearchContainer = styled(HeaderContainer)`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  margin: -3.5rem 0 0;
+  padding: 0 3rem;
+  background-color: ${({ theme }) => theme.colors.red};
+  color: ${({ theme }) => theme.colors.white};
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+    margin: -2rem 0 0;
+  }
+`;
+
+export const SearchBarWrapper = styled(HeaderWrapper)`
+  display: grid;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  margin: -1.5rem 0 4rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2.5rem;
+  }
+`;

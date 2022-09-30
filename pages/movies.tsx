@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { GetServerSideProps } from "next";
+import { useState, useEffect } from "react";
 import { getTopRatedMovies, getTrendingMovies } from "@pages/api/api";
 import Seo from "@components/Seo/Seo";
 import MovieHeader from "@components/MoviePage/MovieHeader";
@@ -28,12 +29,12 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
     <Container>
       <Seo
         title="Reels - Movies"
-        description="Reels is a movie website for all the latest movie downloads"
+        description="Reels is a movie website 
+        for all the latest movie downloads"
       />
 
       <MovieHeader />
       <Search />
-
       <Trending trendingMovies={trendingMovies} />
       <FreeView topRatedMovies={topRatedMovies} />
     </Container>

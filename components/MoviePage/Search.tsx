@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FcSearch } from "react-icons/fc";
 import { useState, useEffect } from "react";
-// import { getMovieQuery } from "@pages/api/api";
+import { getMovieQuery } from "@pages/api/api";
 
 import {
   HeaderContainer,
@@ -12,19 +12,13 @@ import {
   SearchButton,
 } from "@components/MoviePage/HeaderComponents";
 
-//Set Query API
-const QUERY_API = process.env.NEXT_PUBLIC_QUERY_API;
-
-//Make a Movie Query from TMDB API using async/await and limit the results to 4
-export const getMovieQuery = async (query: string) => {
-  const res = await fetch(`${QUERY_API}${query}&page=1&include_adult=false`);
-  const data = await res.json();
-  return data.results.slice(0, 4);
-};
-
 export default function Search() {
+  //Set the state of the search query
   const [searchQuery, setSearchQuery] = useState("");
+  //Set the state of the movie query
   const [searchResults, setSearchResults] = useState([]);
+  //if searchQuery is not found, set state for not found
+  const [notFound, setNotFound] = useState(false);
 
   //Make a search request when the user clicks the search button
   const handleSearch = async (e: { preventDefault: () => void }) => {
@@ -33,8 +27,24 @@ export default function Search() {
     setSearchResults(results);
   };
 
-  //if nothing is typed in the search bar, diable the search button
+  //Notify the user if the search query is not found
+  useEffect(() => {
+    if (searchResults.length === 0) {
+      setNotFound(true);
+    } else {
+      setNotFound(false);
+    }
+  }, [searchResults]);
+
+  //If nothing is typed in the search bar, diable the search button
   const isDisabled = searchQuery.length === 0;
+
+  //On enter key press, make a search request and set the type of event to any
+  const handleKeyPress = (e: any) => {
+    if (e.key === "Enter") {
+      handleSearch(e);
+    }
+  };
 
   useEffect(() => {
     console.log(searchResults);
@@ -51,6 +61,7 @@ export default function Search() {
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleKeyPress}
               />
             </label>
             <SearchButton

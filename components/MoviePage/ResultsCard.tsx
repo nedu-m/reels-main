@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import {
@@ -19,33 +20,38 @@ type Props = {
 
 //Define the component and map the data to the component
 export default function TopRated({ searchResults }: Props) {
-  return (
-    <ContainerInner>
-      <ContentWrapper>
-        <ContentInner>
-          {searchResults.map((movie) => (
-            <CardContainer key={movie.id}>
-              <CardImageWrapper>
-                <CardImageInner>
-                  <CardImageLink>
-                    <Image
-                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                      alt={movie.title}
-                      width={500}
-                      height={750}
-                      placeholder="empty"
-                    />
-                    <p>{`https://image.tmdb.org/t/p/w500${movie.poster_path}`}</p>
-                  </CardImageLink>
-                </CardImageInner>
-                <p>{movie.title}</p>
-              </CardImageWrapper>
-            </CardContainer>
-          ))}
-        </ContentInner>
-      </ContentWrapper>
-    </ContainerInner>
-  );
+  //if the search results are empty, don't render the component
+  if (searchResults.length === 0) {
+    return null;
+  } else {
+    return (
+      <ContainerInner>
+        <ContentWrapper>
+          <ContentInner>
+            {searchResults.map((movie) => (
+              <CardContainer key={movie.id}>
+                <CardImageWrapper>
+                  <CardImageInner>
+                    <CardImageLink>
+                      <Image
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                        width={500}
+                        height={750}
+                        placeholder="empty"
+                      />
+                      <p>{`https://image.tmdb.org/t/p/w500${movie.poster_path}`}</p>
+                    </CardImageLink>
+                  </CardImageInner>
+                  <p>{movie.title}</p>
+                </CardImageWrapper>
+              </CardContainer>
+            ))}
+          </ContentInner>
+        </ContentWrapper>
+      </ContainerInner>
+    );
+  }
 }
 
 const ContainerInner = styled.section`

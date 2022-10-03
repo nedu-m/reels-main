@@ -1,6 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-
-import { useState } from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -8,7 +6,6 @@ type Props = {
 };
 
 export function SelectButton({ title }: Props) {
-  //set the value of header title to the name passed in the props
   return (
     <>
       <Container>

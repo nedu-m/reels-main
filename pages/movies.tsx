@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { GetServerSideProps } from "next";
+import { useState, useEffect } from "react";
 import { getTopRatedMovies, getTrendingMovies } from "@pages/api/api";
 import Seo from "@components/Seo/Seo";
-import SearchHeader from "@components/MoviePage/SearchHeader";
+import MovieHeader from "@components/MoviePage/MovieHeader";
+import Search from "@components/MoviePage/Search";
 import Trending from "@components/MoviePage/Trending";
-import FreeView from "@components/MoviePage/FreeView";
+import TopRated from "@components/MoviePage/TopRated";
+import ResultsCard from "@components/MoviePage/ResultsCard";
 
 //Define the prop types of the component
 type Props = {
@@ -21,18 +24,56 @@ type Props = {
   }[];
 };
 
+//interface for the movie object
+interface Movie {
+  id: number;
+  title: string;
+  poster_path: string;
+}
+
 //Define the component using component composition
 export default function Movies({ topRatedMovies, trendingMovies }: Props) {
+  //Set the results of the search query
+  const [searchResults, setSearchResults] = useState<Movie[]>([]);
+  //no results found
+  const [notFound, setNotFound] = useState(false);
+
+  //Pass the search results to the parent component
+  const searchData = (data: Movie[]) => {
+    setSearchResults(data);
+  };
+
+  //If the search results are empty, set the state to not found
+  useEffect(() => {
+    if (searchResults.length === 0) {
+      setNotFound(true);
+    } else {
+      setNotFound(false);
+    }
+  }, [searchResults]);
+
   return (
-    <Container>
-      <Seo
-        title="Reels - Movies"
-        description="Reels is a movie website for all the latest movie downloads"
-      />
-      <SearchHeader />
-      <Trending trendingMovies={trendingMovies} />
-      <FreeView topRatedMovies={topRatedMovies} />
-    </Container>
+    <>
+      <Container>
+        <Seo
+          title="Reels - Movies"
+          description="Reels is a movie website 
+        for all the latest movie downloads"
+        />
+
+        <MovieHeader />
+        <Search searchProps={searchData} />
+
+        {notFound ? (
+          <>
+            <Trending trendingMovies={trendingMovies} />
+            <TopRated topRatedMovies={topRatedMovies} />
+          </>
+        ) : (
+          <ResultsCard searchResults={searchResults} />
+        )}
+      </Container>
+    </>
   );
 }
 

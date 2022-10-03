@@ -46,7 +46,6 @@ export const ContentInner = styled.div`
   scrollbar-width: none;
   height: auto;
 
-  //Style the scrollbar and make it appealing to the user
   &::-webkit-scrollbar {
     height: 10px;
     width: 10px;

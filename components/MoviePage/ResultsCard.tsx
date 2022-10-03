@@ -8,10 +8,9 @@ import {
   CardImageInner,
   CardImageLink,
 } from "@components/MoviePage/Card";
-import { SelectButton } from "@components/MoviePage/SelectButton";
 
 type Props = {
-  topRatedMovies: {
+  searchResults: {
     id: number;
     title: string;
     poster_path: string;
@@ -19,13 +18,12 @@ type Props = {
 };
 
 //Define the component and map the data to the component
-export default function FreeView({ topRatedMovies }: Props) {
+export default function TopRated({ searchResults }: Props) {
   return (
     <ContainerInner>
-      <SelectButton title={"Top Rated"} />
       <ContentWrapper>
         <ContentInner>
-          {topRatedMovies.map((movie) => (
+          {searchResults.map((movie) => (
             <CardContainer key={movie.id}>
               <CardImageWrapper>
                 <CardImageInner>

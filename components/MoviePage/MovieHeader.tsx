@@ -4,7 +4,7 @@ import {
   HeaderContent,
   HeaderTitle,
   HeaderSubtitle,
-} from "@components/MoviePage/HeaderComponents";
+} from "@components/MoviePage/Header";
 
 export default function MovieHeader() {
   return (

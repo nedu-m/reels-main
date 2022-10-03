@@ -10,15 +10,18 @@ import {
   SearchBar,
   SearchInput,
   SearchButton,
-} from "@components/MoviePage/HeaderComponents";
+} from "@components/MoviePage/Header";
 
-export default function Search({ searchData }: any) {
+//set search props type to id, title, poster_path as void function
+type SearchProps = (
+  data: { id: number; title: string; poster_path: string }[]
+) => void;
+
+export default function Search({ searchProps }: { searchProps: SearchProps }) {
   //Set the state of the search query
   const [searchQuery, setSearchQuery] = useState("");
   //Set the state of the movie query
   const [searchMovie, setSearchMovie] = useState([]);
-  //if searchQuery is not found, set state for not found
-  const [notFound, setNotFound] = useState(false);
 
   //Make a search request when the user clicks the search button
   const handleSearch = async (e: { preventDefault: () => void }) => {
@@ -29,8 +32,8 @@ export default function Search({ searchData }: any) {
 
   //Pass the search results to the parent component
   useEffect(() => {
-    searchData(searchMovie);
-  }, [searchData, searchMovie]);
+    searchProps(searchMovie);
+  }, [searchProps, searchMovie]);
 
   //If nothing is typed in the search bar, diable the search button
   const isDisabled = searchQuery.length === 0;

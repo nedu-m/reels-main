@@ -20,6 +20,7 @@ type Props = {
 
 //Define the component and map the data to the component
 export default function FreeView({ trendingMovies }: Props) {
+  console.log(trendingMovies);
   return (
     <ContainerInner>
       <SelectButton title={"Trending"} />

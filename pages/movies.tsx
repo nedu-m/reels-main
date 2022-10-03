@@ -55,7 +55,6 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
 
         <ErrorBoundary>
           <Trending trendingMovies={trendingMovies} />
-          <TopRated topRatedMovies={topRatedMovies} />
         </ErrorBoundary>
       </Container>
     </>

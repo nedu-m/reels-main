@@ -28,7 +28,7 @@ export const getTrendingMovies = async () => {
   return data.results;
 };
 
-//use the getEnv to Make a Movie Query from TMDB API using async/await
+//use the getEnv to Make a Movie Query from TMDB API using async/await, limit to 10 results
 export const getMovieQuery = async (query: string) => {
   const res = await fetch(
     `${QUERY_API}?api_key=${getEnv(

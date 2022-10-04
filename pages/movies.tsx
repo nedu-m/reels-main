@@ -64,9 +64,7 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
         />
 
         <MovieHeader />
-        <ErrorBoundary>
-          <Search searchProps={searchData} />
-        </ErrorBoundary>
+        <Search searchProps={searchData} />
         {notFound ? (
           <>
             <ErrorBoundary>

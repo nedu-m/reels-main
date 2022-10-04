@@ -26,7 +26,8 @@ export default function ErrorBoundary({ children }: Props) {
 const AnnounceError = () => {
   return (
     <ErrorBoundaryWrapper>
-      <h1>Something went wrong</h1>
+      <h3>Beep boop, something went wrong...</h3>
+      <p>Refresh and try a different keyword.</p>
     </ErrorBoundaryWrapper>
   );
 };
@@ -38,10 +39,25 @@ const ErrorBoundaryWrapper = styled.div`
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 1.5rem 0;
   justify-content: center;
   align-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.black};
+  text-align: center;
+
+  h3 {
+    ::before {
+      content: "🤖";
+      margin-right: 0.5rem;
+    }
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 auto;
+  }
+  p {
+    font-size: 1rem;
+    font-weight: 400;
+  }
 `;

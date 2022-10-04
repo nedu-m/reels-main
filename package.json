@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "scriptname": "husky install"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,html,css,json}": [
@@ -36,7 +37,7 @@
     "@types/styled-components": "^5.1.26",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
-    "husky": "^8.0.0",
+    "husky": "^8.0.1",
     "jest": "^28.1.3",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",

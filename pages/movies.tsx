@@ -37,10 +37,23 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
   //Set the results of the search query
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
 
+  //set not found/no-search state
+  const [notFound, setNotFound] = useState(false);
+
   //Pass the search results to the parent component
   const searchData = (data: Movie[]) => {
     setSearchResults(data);
   };
+
+  //if the search results are empty, set the not found state to true
+  useEffect(() => {
+    if (searchResults.length === 0) {
+      setNotFound(true);
+    } else {
+      setNotFound(false);
+    }
+  }, [searchResults]);
+
   return (
     <>
       <Container>
@@ -52,6 +65,21 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
 
         <MovieHeader />
         <Search searchProps={searchData} />
+        {notFound ? (
+          <>
+            <ErrorBoundary>
+              <Trending trendingMovies={trendingMovies} />
+            </ErrorBoundary>
+
+            <ErrorBoundary>
+              <TopRated topRatedMovies={topRatedMovies} />
+            </ErrorBoundary>
+          </>
+        ) : (
+          <ErrorBoundary>
+            <ResultsCard searchResults={searchResults} />
+          </ErrorBoundary>
+        )}
       </Container>
     </>
   );

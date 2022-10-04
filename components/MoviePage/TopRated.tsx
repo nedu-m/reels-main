@@ -20,7 +20,6 @@ type Props = {
 
 //Define the component and map the data to the component
 export default function TopRated({ topRatedMovies }: Props) {
-  console.log(topRatedMovies);
   return (
     <ContainerInner>
       <SelectButton title={"Top Rated"} />

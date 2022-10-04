@@ -1,5 +1,3 @@
-//define error boundary component
-
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -11,7 +9,7 @@ export default function ErrorBoundary({ children }: Props) {
   const [hasError, setHasError] = useState(false);
 
   if (hasError) {
-    return <PageError />;
+    return <AnnounceError />;
   }
 
   return (
@@ -24,6 +22,14 @@ export default function ErrorBoundary({ children }: Props) {
     </ErrorBoundaryWrapper>
   );
 }
+
+const AnnounceError = () => {
+  return (
+    <ErrorBoundaryWrapper>
+      <h1>Something went wrong</h1>
+    </ErrorBoundaryWrapper>
+  );
+};
 
 const ErrorBoundaryWrapper = styled.div`
   display: grid;
@@ -39,11 +45,3 @@ const ErrorBoundaryWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.black};
 `;
-
-const PageError = () => {
-  return (
-    <ErrorBoundaryWrapper>
-      <h1>Something went wrong</h1>
-    </ErrorBoundaryWrapper>
-  );
-};

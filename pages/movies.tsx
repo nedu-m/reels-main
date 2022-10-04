@@ -52,10 +52,6 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
 
         <MovieHeader />
         <Search searchProps={searchData} />
-
-        <ErrorBoundary>
-          <Trending trendingMovies={trendingMovies} />
-        </ErrorBoundary>
       </Container>
     </>
   );

@@ -1,43 +1,59 @@
 import styled from "styled-components";
 import CardData from "./data";
-import Image from "next/image";
+
+import {
+  CardContainer,
+  CardWrapper,
+  CardInner,
+  CardContent,
+  CardImageWrapper,
+  CardImage,
+} from "@components/HomePage/Card/Card";
+
+import {
+  ButtonWrapper,
+  ButtonWrapperII,
+  ButtonInner,
+  Button,
+  ButtonII,
+} from "@components/HomePage/Buttons/Button";
 
 const Hero = () => {
   return (
     <Container>
       <InnerContainer>
-        <ContentWrapper>
-          <ContentListingLettering>Stay in the Know.</ContentListingLettering>
-          <ContentTitle>
+        <HeroWrapper>
+          <HeroLettering>Stay in the Know.</HeroLettering>
+          <HeroTitle>
             Instantly download your favorite movies, for free.
-          </ContentTitle>
+          </HeroTitle>
           <ButtonWrapper>
             <ButtonInner>
               <Button>Explore</Button>
             </ButtonInner>
           </ButtonWrapper>
-          <ButtonWrapperSecond>
+          <ButtonWrapperII>
             <ButtonInner>
-              <ButtonSecond>Join Our Mail List</ButtonSecond>
+              <ButtonII>Join Our Mail List</ButtonII>
             </ButtonInner>
-          </ButtonWrapperSecond>
-        </ContentWrapper>
+          </ButtonWrapperII>
+        </HeroWrapper>
 
-        <ContentListing>
+        <HeroListing>
           <CardContainer>
             {CardData.map((card) => (
-              <CardContainerInner key={card.id}>
-                <Card>
+              <CardWrapper key={card.id}>
+                <CardInner>
                   <CardContent>
                     <CardImageWrapper>
                       <CardImage src={card.src} alt={card.alt} />
                     </CardImageWrapper>
                   </CardContent>
-                </Card>
-              </CardContainerInner>
+                </CardInner>
+              </CardWrapper>
             ))}
           </CardContainer>
-        </ContentListing>
+        </HeroListing>
       </InnerContainer>
     </Container>
   );
@@ -74,12 +90,12 @@ const InnerContainer = styled.div`
   }
 `;
 
-const ContentWrapper = styled.div`
+const HeroWrapper = styled.div`
   width: 100%;
   padding: 3.5rem 1.5rem 1.5rem;
 `;
 
-const ContentListing = styled.div`
+const HeroListing = styled.div`
   padding: 1.5rem;
   margin-top: -3rem;
   width: 100%;
@@ -89,64 +105,7 @@ const ContentListing = styled.div`
   }
 `;
 
-const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
-  gap: 1.5rem;
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    gap: 1rem;
-  }
-`;
-
-const CardContainerInner = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding-bottom: 1.5rem;
-`;
-
-const Card = styled.div`
-  width: 11rem;
-  margin: 0 auto;
-  border-radius: 1rem;
-  background-color: #f3f3f3;
-  padding: 0.75rem;
-  &:hover {
-    transform: scale(1.05);
-    transition: transform 0.9s ease-in-out;
-  }
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    width: 10rem;
-  }
-
-  @media (max-width: ${(props) => props.theme.breakpoints.sm}) {
-    width: 8.8rem;
-  }
-`;
-
-const CardContent = styled.div`
-  display: flex;
-  place-content: center;
-  flex-wrap: wrap;
-  margin: -1rem;
-  height: auto;
-`;
-
-const CardImageWrapper = styled.div`
-  padding: 0.9rem 0.9rem 0.7rem;
-`;
-
-const CardImage = styled(Image)`
-  object-fit: cover;
-  border-radius: 0.8rem;
-`;
-
-const ContentTitle = styled.h1`
+const HeroTitle = styled.h1`
   margin-bottom: 3rem;
   margin-top: auto;
   font-size: 4rem;
@@ -155,50 +114,11 @@ const ContentTitle = styled.h1`
   color: ${(props) => props.theme.colors.white};
 `;
 
-const ContentListingLettering = styled.p`
+const HeroLettering = styled.p`
   margin-bottom: 1.25rem;
   font-size: 1.313rem;
   line-height: 1.75rem;
   font-weight: 500;
   color: #eeeeee;
   opacity: 1;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: -0.75rem -0.75rem 0.75rem -0.75rem;
-`;
-
-const ButtonWrapperSecond = styled(ButtonWrapper)`
-  margin-bottom: 3rem;
-`;
-
-const ButtonInner = styled.div`
-  width: 100%;
-  padding: 0.75rem;
-`;
-
-const Button = styled.button`
-  width: 100%;
-  border-radius: 0.375rem;
-  border: none;
-  background-color: white;
-  padding: 1rem 1.5rem;
-  font-size: 1.3rem;
-  font-weight: 500;
-  line-height: 1.5rem;
-  color: ${(props) => props.theme.colors.black};
-  cursor: pointer;
-  &:hover {
-    background-color: ${(props) => props.theme.colors.black};
-    color: white;
-    border: ${(props) => props.theme.colors.white} 3px solid;
-  }
-`;
-
-const ButtonSecond = styled(Button)`
-  background-color: transparent;
-  color: ${(props) => props.theme.colors.white};
-  border: 2px solid ${(props) => props.theme.colors.white};
 `;

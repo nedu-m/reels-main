@@ -5,9 +5,8 @@ const ServiceData = [
   {
     title: "Get the movie download link right in your mail.",
     description: `
-  From the moment you sign up, you'll get a link to download the
-  latest movie right in your inbox curated from your chosen
-  category. Yes, it is that simple.
+  From the moment you subscribe, you'll get a link to download the movie you want.
+  No more searching for download links. We'll send it right to your mail.
   `,
     listings: [
       {

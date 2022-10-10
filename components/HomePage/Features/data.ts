@@ -1,25 +1,25 @@
 import Category from "assets/svgs/category.svg";
-import Select from "assets/svgs/select.svg";
+import Link from "assets/svgs/select.svg";
 import Subscribe from "assets/svgs/subscribe.svg";
 
 const FeaturesData = [
   {
     id: 1,
-    src: Category,
-    alt: "Category",
-    text: "Choose from a wide range of categories to find the perfect for you.",
+    src: Subscribe,
+    alt: "Sign Up",
+    text: "Sign up to join our list of subscribers.",
   },
   {
     id: 2,
-    src: Select,
-    alt: "Select",
-    text: "Select from a wide range of categories to find the perfect for you.",
+    src: Category,
+    alt: "Select Category",
+    text: "Select the movies you want to download.",
   },
   {
     id: 3,
-    src: Subscribe,
-    alt: "Subscribe",
-    text: "Subscribe to our newsletter to get the latest offers and discounts.",
+    src: Link,
+    alt: "Get Link",
+    text: "Get the download link and enjoy your movie.",
   },
 ];
 

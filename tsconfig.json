@@ -20,9 +20,16 @@
       "@pages/*": ["pages/*"],
       "@theme/*": ["theme/*"],
       "@assets/*": ["assets/*"],
-      "@lib/*": ["lib/*"]
+      "@lib/*": ["lib/*"],
+      "@helper/*": ["helper/*"]
     }
   },
-  "include": ["next-env.d.ts", "./jest-setup.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "./jest-setup.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "helper/supabaseClient.ts"
+  ],
   "exclude": ["node_modules"]
 }

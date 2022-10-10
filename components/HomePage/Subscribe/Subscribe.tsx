@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase } from "../../../helper/supabaseClient";
+import { supabaseClient } from "../../../helper/supabaseClient";
 import SubscribeData from "./data";
 
 import {
@@ -18,7 +18,32 @@ import {
 } from "./subscribeStyled";
 
 const Subscribe = () => {
-  //render the subscribe component with the data from the data.ts file
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+    const { error } = await supabaseClient.auth.signUp({
+      email: email,
+      password: "",
+    });
+    if (error) {
+      alert(error.message);
+    } else {
+      alert("Check your email for the login link!");
+    }
+    setLoading(false);
+    clearInput();
+  };
+
+  //clear input after submit
+  const clearInput = () => {
+    setEmail("");
+    setFullName("");
+  };
+
   return (
     <Container>
       <SubscribeWrapper>
@@ -28,14 +53,22 @@ const Subscribe = () => {
               <SubscribeImage src={item.image} />
               <SubscribeTitle>{item.title}</SubscribeTitle>
               <SubscribeDescription>{item.description}</SubscribeDescription>
-              <SubscribeForm>
+              <SubscribeForm onSubmit={handleSubmit}>
                 <SubscribeInput
                   type="text"
-                  name="full_name"
                   placeholder="Full Name"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                 />
-                <SubscribeInput type="email" name="email" placeholder="Email" />
-                <SubscribeButton type="submit">Sign Up</SubscribeButton>
+                <SubscribeInput
+                  type="email"
+                  placeholder="Email Address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <SubscribeButton type="submit" disabled={loading}>
+                  {loading ? "Loading..." : "Subscribe"}
+                </SubscribeButton>
               </SubscribeForm>
               <SubscribePrivacy>
                 <SubscribePrivacyText>

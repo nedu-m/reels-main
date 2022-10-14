@@ -9,6 +9,7 @@ import Trending from "@components/MoviePage/Trending";
 import TopRated from "@components/MoviePage/TopRated";
 import ResultsCard from "@components/MoviePage/ResultsCard";
 import ErrorBoundary from "@components/Error/ErrorBoundary";
+import FreeView from "@components/MoviePage/Trending";
 
 //Define the prop types of the component
 type Props = {
@@ -64,8 +65,9 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
 
         <MovieHeader />
         <Search searchProps={searchData} />
-        <Trending trendingMovies={trendingMovies} />
-        <TopRated topRatedMovies={topRatedMovies} />
+        <ErrorBoundary>
+          <Trending trendingMovies={trendingMovies} />
+        </ErrorBoundary>
       </Container>
     </>
   );

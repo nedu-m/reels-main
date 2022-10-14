@@ -36,5 +36,5 @@ export const getMovieQuery = async (query: string) => {
     )}&language=en-US&query=${query}&page=1&include_adult=false`
   );
   const data = await res.json();
-  return data.results;
+  return data.results.slice(0, 10);
 };

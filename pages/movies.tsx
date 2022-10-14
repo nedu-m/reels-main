@@ -64,7 +64,7 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
         />
 
         <MovieHeader />
-        {/* <Search searchProps={searchData} />
+        <Search searchProps={searchData} />
         {notFound ? (
           <>
             <ErrorBoundary>
@@ -79,7 +79,7 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
           <ErrorBoundary>
             <ResultsCard searchResults={searchResults} />
           </ErrorBoundary>
-        )} */}
+        )}
       </Container>
     </>
   );

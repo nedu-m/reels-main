@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { supabaseClient } from "../../../helper/supabaseClient";
 import SubscribeData from "./data";
+import toast, { Toaster } from "react-hot-toast";
 
 import {
   Container,
@@ -22,18 +23,37 @@ const Subscribe = () => {
   const [fullName, setFullName] = useState("");
   const [loading, setLoading] = useState(false);
 
+  //set notifcation toasts for success and error
+  const notifySuccess = () =>
+    toast.success("Check your email for the confirmation link!");
+  const notifyError = () =>
+    toast.error("Invalid email address. Please try again!");
+
+  //Handle the form submission
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
+
+    //Check if the email is a valid email address - using regex
+    const isEmail = /\S+@\S+\.\S+/.test(email);
+
+    //Check if the email is valid, send a toast notification if not
+    if (!isEmail) {
+      notifyError();
+      setLoading(false);
+      return;
+    }
+
     const { error } = await supabaseClient.auth.signUp({
       email: email,
-      password: "",
+      password: "password",
     });
     if (error) {
       alert(error.message);
     } else {
-      alert("Check your email for the login link!");
+      notifySuccess();
     }
+
     setLoading(false);
     clearInput();
   };
@@ -67,7 +87,7 @@ const Subscribe = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <SubscribeButton type="submit" disabled={loading}>
-                  {loading ? "Loading..." : "Subscribe"}
+                  {loading ? "Sending a link..." : "Subscribe"}
                 </SubscribeButton>
               </SubscribeForm>
               <SubscribePrivacy>
@@ -81,6 +101,7 @@ const Subscribe = () => {
             </SubscribeInner>
           );
         })}
+        <Toaster />
       </SubscribeWrapper>
     </Container>
   );

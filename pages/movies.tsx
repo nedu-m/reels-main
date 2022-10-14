@@ -53,7 +53,6 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
       setNotFound(false);
     }
   }, [searchResults]);
-
   return (
     <>
       <Container>
@@ -65,21 +64,8 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
 
         <MovieHeader />
         <Search searchProps={searchData} />
-        {notFound ? (
-          <>
-            <ErrorBoundary>
-              <Trending trendingMovies={trendingMovies} />
-            </ErrorBoundary>
-
-            <ErrorBoundary>
-              <TopRated topRatedMovies={topRatedMovies} />
-            </ErrorBoundary>
-          </>
-        ) : (
-          <ErrorBoundary>
-            <ResultsCard searchResults={searchResults} />
-          </ErrorBoundary>
-        )}
+        <Trending trendingMovies={trendingMovies} />
+        <TopRated topRatedMovies={topRatedMovies} />
       </Container>
     </>
   );

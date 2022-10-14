@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabaseClient } from "../../../helper/supabaseClient";
+import { supabase } from "@helper/supabase";
 import SubscribeData from "./data";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -44,7 +44,7 @@ const Subscribe = () => {
       return;
     }
 
-    const { error } = await supabaseClient.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email: email,
       password: "password",
     });

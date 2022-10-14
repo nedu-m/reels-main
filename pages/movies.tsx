@@ -64,12 +64,22 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
         />
 
         <MovieHeader />
-        <ErrorBoundary>
-          <Search searchProps={searchData} />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <Trending trendingMovies={trendingMovies} />
-        </ErrorBoundary>
+        <Search searchProps={searchData} />
+
+        {notFound ? (
+          <>
+            <ErrorBoundary>
+              <Trending trendingMovies={trendingMovies} />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <TopRated topRatedMovies={topRatedMovies} />
+            </ErrorBoundary>
+          </>
+        ) : (
+          <ErrorBoundary>
+            <ResultsCard searchResults={searchResults} />
+          </ErrorBoundary>
+        )}
       </Container>
     </>
   );

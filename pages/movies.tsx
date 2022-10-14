@@ -9,8 +9,7 @@ import Trending from "@components/MoviePage/Trending";
 import TopRated from "@components/MoviePage/TopRated";
 import ResultsCard from "@components/MoviePage/ResultsCard";
 import ErrorBoundary from "@components/Error/ErrorBoundary";
-import { withPageAuth } from "@supabase/auth-helpers-nextjs";
-import { supabaseClient } from "@helper/supabaseClient";
+import FreeView from "@components/MoviePage/Trending";
 
 //Define the prop types of the component
 type Props = {
@@ -55,7 +54,6 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
       setNotFound(false);
     }
   }, [searchResults]);
-
   return (
     <>
       <Container>
@@ -67,12 +65,12 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
 
         <MovieHeader />
         <Search searchProps={searchData} />
+
         {notFound ? (
           <>
             <ErrorBoundary>
               <Trending trendingMovies={trendingMovies} />
             </ErrorBoundary>
-
             <ErrorBoundary>
               <TopRated topRatedMovies={topRatedMovies} />
             </ErrorBoundary>

@@ -29,7 +29,7 @@
     "./jest-setup.ts",
     "**/*.ts",
     "**/*.tsx",
-    "helper/supabaseClient.ts"
+    "helper/supabase.ts"
   ],
   "exclude": ["node_modules"]
 }

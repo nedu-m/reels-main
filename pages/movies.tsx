@@ -9,7 +9,6 @@ import Trending from "@components/MoviePage/Trending";
 import TopRated from "@components/MoviePage/TopRated";
 import ResultsCard from "@components/MoviePage/ResultsCard";
 import ErrorBoundary from "@components/Error/ErrorBoundary";
-import FreeView from "@components/MoviePage/Trending";
 
 //Define the prop types of the component
 type Props = {
@@ -64,22 +63,34 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
         />
 
         <MovieHeader />
-        <Search searchProps={searchData} />
+        <ErrorBoundary>
+          <Search searchProps={searchData} />
+        </ErrorBoundary>
 
-        {notFound ? (
-          <>
+        {searchResults.map((movie) => (
+          <p key={movie.id}>{movie.title}</p>
+        ))}
+
+        {/* <ErrorBoundary>
+          <Search searchProps={searchData} />
+        </ErrorBoundary>
+
+        <ErrorBoundary>
+          {notFound ? (
+            <>
+              <ErrorBoundary>
+                <Trending trendingMovies={trendingMovies} />
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <TopRated topRatedMovies={topRatedMovies} />
+              </ErrorBoundary>
+            </>
+          ) : (
             <ErrorBoundary>
-              <Trending trendingMovies={trendingMovies} />
+              <ResultsCard searchResults={searchResults} />
             </ErrorBoundary>
-            <ErrorBoundary>
-              <TopRated topRatedMovies={topRatedMovies} />
-            </ErrorBoundary>
-          </>
-        ) : (
-          <ErrorBoundary>
-            <ResultsCard searchResults={searchResults} />
-          </ErrorBoundary>
-        )}
+          )}
+        </ErrorBoundary> */}
       </Container>
     </>
   );

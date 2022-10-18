@@ -45,14 +45,20 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
     setSearchResults(data);
   };
 
+  //loop through the search results and omit the movies with no poster
+  const filteredSearchResults = searchResults.filter(
+    (movie) => movie.poster_path !== null
+  );
+
   //if the search results are empty, set the not found state to true
   useEffect(() => {
-    if (searchResults.length === 0) {
+    if (filteredSearchResults.length === 0) {
       setNotFound(true);
     } else {
       setNotFound(false);
     }
-  }, [searchResults]);
+  }, [filteredSearchResults]);
+
   return (
     <>
       <Container>
@@ -68,7 +74,7 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
         </ErrorBoundary>
 
         <ErrorBoundary>
-          <ResultsCard searchResults={searchResults} />
+          <ResultsCard searchResults={filteredSearchResults} />
         </ErrorBoundary>
 
         {/* <ErrorBoundary>

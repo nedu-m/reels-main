@@ -18,7 +18,7 @@ type Props = {
 };
 
 //Define the component and map the data to the component
-export default function TopRated({ searchResults }: Props) {
+export default function ResultsCard({ searchResults }: Props) {
   //if the search results are empty, don't render the component
   if (searchResults.length === 0) {
     return null;
@@ -50,6 +50,28 @@ export default function TopRated({ searchResults }: Props) {
           </ContentInner>
         </ContentWrapper>
       </ContainerInner>
+
+      // <ContentWrapper>
+      //   <ContentInner>
+      //     <CardContainer>
+      //       {searchResults.map((movie) => (
+      //         <CardImageWrapper key={movie.id}>
+      //           <CardImageInner>
+      //             <CardImageLink href={`/movies/${movie.id}`}>
+      //               <Image
+      //                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+      //                 alt={movie.title}
+      //                 width={500}
+      //                 height={750}
+      //                 layout="responsive"
+      //               />
+      //             </CardImageLink>
+      //           </CardImageInner>
+      //         </CardImageWrapper>
+      //       ))}
+      //     </CardContainer>
+      //   </ContentInner>
+      // </ContentWrapper>
     );
   }
 }

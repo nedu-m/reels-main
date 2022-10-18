@@ -67,9 +67,9 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
           <Search searchProps={searchData} />
         </ErrorBoundary>
 
-        {searchResults.map((movie) => (
-          <p key={movie.id}>{movie.title}</p>
-        ))}
+        <ErrorBoundary>
+          <ResultsCard searchResults={searchResults} />
+        </ErrorBoundary>
 
         {/* <ErrorBoundary>
           <Search searchProps={searchData} />

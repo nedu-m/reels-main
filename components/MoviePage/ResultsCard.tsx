@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import {
@@ -24,6 +23,7 @@ export default function TopRated({ searchResults }: Props) {
   if (searchResults.length === 0) {
     return null;
   } else {
+    //if the search results are not empty, render the component
     return (
       <ContainerInner>
         <ContentWrapper>

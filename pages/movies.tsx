@@ -63,6 +63,14 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
         />
 
         <MovieHeader />
+        <ErrorBoundary>
+          <Search searchProps={searchData} />
+        </ErrorBoundary>
+
+        {searchResults.map((movie) => (
+          <p key={movie.id}>{movie.title}</p>
+        ))}
+
         {/* <ErrorBoundary>
           <Search searchProps={searchData} />
         </ErrorBoundary>
@@ -82,17 +90,6 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
               <ResultsCard searchResults={searchResults} />
             </ErrorBoundary>
           )}
-        </ErrorBoundary> */}
-
-        <ErrorBoundary>
-          <Trending trendingMovies={trendingMovies} />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <TopRated topRatedMovies={topRatedMovies} />
-        </ErrorBoundary>
-
-        {/* <ErrorBoundary>
-          <ResultsCard searchResults={searchResults} />
         </ErrorBoundary> */}
       </Container>
     </>

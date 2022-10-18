@@ -60,18 +60,11 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
     }
   }, [filteredSearchResults]);
 
-  //convert the top rated movies to an array of movie objects
-  const topRatedMoviesArray = topRatedMovies.map((movie) => {
-    return {
-      id: movie.id,
-      title: movie.title,
-      poster_path: movie.poster_path,
-      overview: movie.overview,
-      popularity: movie.popularity,
-      vote_average: movie.vote_average,
-      release_date: movie.release_date,
-    };
-  });
+  //convert topRatedMovies to an array of mappable objects
+  const topRatedMoviesArray = Object.values(topRatedMovies);
+
+  //convert trendingMovies to an array of mappable objects
+  const trendingMoviesArray = Object.values(trendingMovies);
 
   return (
     <>
@@ -87,21 +80,21 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
           <Search searchProps={searchProps} />
         </ErrorBoundary>
 
-        {/* <ErrorBoundary>
-          <ResultsCard searchResults={filteredSearchResults} />
-        </ErrorBoundary> */}
-
-        <ul>
-          {topRatedMoviesArray.map((movie) => (
-            <li key={movie.id}>
-              <p>{movie.title}</p>
-              <p>{movie.overview}</p>
-              <p>{movie.popularity}</p>
-              <p>{movie.vote_average}</p>
-              <p>{movie.release_date}</p>
-            </li>
-          ))}
-        </ul>
+        {filteredSearchResults.length === 0 ? (
+          <>
+            <ErrorBoundary>
+              <Trending trendingMovies={trendingMoviesArray} />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <TopRated topRatedMovies={topRatedMoviesArray} />
+            </ErrorBoundary>
+          </>
+        ) : (
+          //If the search results are not empty, render the search results
+          <ErrorBoundary>
+            <ResultsCard searchResults={filteredSearchResults} />
+          </ErrorBoundary>
+        )}
       </Container>
     </>
   );

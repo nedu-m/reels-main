@@ -53,7 +53,6 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
       setNotFound(false);
     }
   }, [searchResults]);
-
   return (
     <>
       <Container>
@@ -64,22 +63,34 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
         />
 
         <MovieHeader />
-        {/* <Search searchProps={searchData} />
-        {notFound ? (
-          <>
-            <ErrorBoundary>
-              <Trending trendingMovies={trendingMovies} />
-            </ErrorBoundary>
+        <ErrorBoundary>
+          <Search searchProps={searchData} />
+        </ErrorBoundary>
 
+        {searchResults.map((movie) => (
+          <p key={movie.id}>{movie.title}</p>
+        ))}
+
+        {/* <ErrorBoundary>
+          <Search searchProps={searchData} />
+        </ErrorBoundary>
+
+        <ErrorBoundary>
+          {notFound ? (
+            <>
+              <ErrorBoundary>
+                <Trending trendingMovies={trendingMovies} />
+              </ErrorBoundary>
+              <ErrorBoundary>
+                <TopRated topRatedMovies={topRatedMovies} />
+              </ErrorBoundary>
+            </>
+          ) : (
             <ErrorBoundary>
-              <TopRated topRatedMovies={topRatedMovies} />
+              <ResultsCard searchResults={searchResults} />
             </ErrorBoundary>
-          </>
-        ) : (
-          <ErrorBoundary>
-            <ResultsCard searchResults={searchResults} />
-          </ErrorBoundary>
-        )} */}
+          )}
+        </ErrorBoundary> */}
       </Container>
     </>
   );

@@ -11,7 +11,7 @@ import {
 import { SelectButton } from "@components/MoviePage/SelectButton";
 
 type Props = {
-  trendingMovies: {
+  trendingMoviesArray: {
     id: number;
     title: string;
     poster_path: string;
@@ -19,13 +19,13 @@ type Props = {
 };
 
 //Define the component and map the data to the component
-export default function FreeView({ trendingMovies }: Props) {
+export default function FreeView({ trendingMoviesArray }: Props) {
   return (
     <ContainerInner>
       <SelectButton title={"Trending"} />
       <ContentWrapper>
         <ContentInner>
-          {trendingMovies.map((movie) => (
+          {trendingMoviesArray.map((movie) => (
             <CardContainer key={movie.id}>
               <CardImageWrapper>
                 <CardImageInner>

@@ -83,10 +83,10 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
         {filteredSearchResults.length === 0 ? (
           <>
             <ErrorBoundary>
-              <Trending trendingMovies={trendingMoviesArray} />
+              <Trending trendingMoviesArray={trendingMoviesArray} />
             </ErrorBoundary>
             <ErrorBoundary>
-              <TopRated topRatedMovies={topRatedMoviesArray} />
+              <TopRated topRatedMoviesArray={topRatedMoviesArray} />
             </ErrorBoundary>
           </>
         ) : (

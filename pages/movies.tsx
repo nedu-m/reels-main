@@ -13,6 +13,7 @@ import ErrorBoundary from "@components/Error/ErrorBoundary";
 //Define the prop types of the component
 type Props = {
   topRatedMovies: {
+    [x: string]: any;
     id: number;
     title: string;
     poster_path: string;
@@ -37,20 +38,20 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
   //Set the results of the search query
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
 
-  //set not found/no-search state
+  //Set not found/no-search state
   const [notFound, setNotFound] = useState(false);
 
   //Pass the search results to the parent component
-  const searchData = (data: Movie[]) => {
+  const searchProps = (data: Movie[]) => {
     setSearchResults(data);
   };
 
-  //loop through the search results and omit the movies with no poster
+  //Filter the search results to only include movies with a poster
   const filteredSearchResults = searchResults.filter(
     (movie) => movie.poster_path !== null
   );
 
-  //if the search results are empty, set the not found state to true
+  //If the search results are empty, set the not found state to true
   useEffect(() => {
     if (filteredSearchResults.length === 0) {
       setNotFound(true);
@@ -58,6 +59,19 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
       setNotFound(false);
     }
   }, [filteredSearchResults]);
+
+  //convert the top rated movies to an array of movie objects
+  const topRatedMoviesArray = topRatedMovies.map((movie) => {
+    return {
+      id: movie.id,
+      title: movie.title,
+      poster_path: movie.poster_path,
+      overview: movie.overview,
+      popularity: movie.popularity,
+      vote_average: movie.vote_average,
+      release_date: movie.release_date,
+    };
+  });
 
   return (
     <>
@@ -70,33 +84,24 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
 
         <MovieHeader />
         <ErrorBoundary>
-          <Search searchProps={searchData} />
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <ResultsCard searchResults={filteredSearchResults} />
+          <Search searchProps={searchProps} />
         </ErrorBoundary>
 
         {/* <ErrorBoundary>
-          <Search searchProps={searchData} />
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          {notFound ? (
-            <>
-              <ErrorBoundary>
-                <Trending trendingMovies={trendingMovies} />
-              </ErrorBoundary>
-              <ErrorBoundary>
-                <TopRated topRatedMovies={topRatedMovies} />
-              </ErrorBoundary>
-            </>
-          ) : (
-            <ErrorBoundary>
-              <ResultsCard searchResults={searchResults} />
-            </ErrorBoundary>
-          )}
+          <ResultsCard searchResults={filteredSearchResults} />
         </ErrorBoundary> */}
+
+        <ul>
+          {topRatedMoviesArray.map((movie) => (
+            <li key={movie.id}>
+              <p>{movie.title}</p>
+              <p>{movie.overview}</p>
+              <p>{movie.popularity}</p>
+              <p>{movie.vote_average}</p>
+              <p>{movie.release_date}</p>
+            </li>
+          ))}
+        </ul>
       </Container>
     </>
   );

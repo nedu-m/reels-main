@@ -12,6 +12,7 @@ import { SelectButton } from "@components/MoviePage/SelectButton";
 
 type Props = {
   topRatedMovies: {
+    [x: string]: any;
     id: number;
     title: string;
     poster_path: string;

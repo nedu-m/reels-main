@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { GetServerSideProps } from "next";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { getTopRatedMovies, getTrendingMovies } from "@pages/api/api";
 import Seo from "@components/Seo/Seo";
 import MovieHeader from "@components/MoviePage/MovieHeader";
@@ -9,37 +9,15 @@ import Trending from "@components/MoviePage/Trending";
 import TopRated from "@components/MoviePage/TopRated";
 import ResultsCard from "@components/MoviePage/ResultsCard";
 import ErrorBoundary from "@components/Error/ErrorBoundary";
+import type { Movie, topRatedProps, trendingProps } from "types/movies";
 
-//Define the prop types of the component
-type Props = {
-  topRatedMovies: {
-    [x: string]: any;
-    id: number;
-    title: string;
-    poster_path: string;
-  }[];
-
-  trendingMovies: {
-    id: number;
-    title: string;
-    poster_path: string;
-  }[];
-};
-
-//interface for the movie object
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-}
-
-//Define the component using component composition
-export default function Movies({ topRatedMovies, trendingMovies }: Props) {
+//Define the component and map the data to the component
+export default function Movies({
+  topRatedMovies,
+  trendingMovies,
+}: topRatedProps & trendingProps) {
   //Set the results of the search query
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
-
-  //Set not found/no-search state
-  const [notFound, setNotFound] = useState(false);
 
   //Pass the search results to the parent component
   const searchProps = (data: Movie[]) => {
@@ -51,21 +29,6 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
     (movie) => movie.poster_path !== null
   );
 
-  //If the search results are empty, set the not found state to true
-  useEffect(() => {
-    if (filteredSearchResults.length === 0) {
-      setNotFound(true);
-    } else {
-      setNotFound(false);
-    }
-  }, [filteredSearchResults]);
-
-  //convert topRatedMovies to an array of mappable objects
-  const topRatedMoviesArray = Object.values(topRatedMovies);
-
-  //convert trendingMovies to an array of mappable objects
-  const trendingMoviesArray = Object.values(trendingMovies);
-
   return (
     <>
       <Container>
@@ -76,25 +39,17 @@ export default function Movies({ topRatedMovies, trendingMovies }: Props) {
         />
 
         <MovieHeader />
+        <Search searchProps={searchProps} />
         <ErrorBoundary>
-          <Search searchProps={searchProps} />
-        </ErrorBoundary>
-
-        {filteredSearchResults.length === 0 ? (
-          <>
-            <ErrorBoundary>
-              <Trending trendingMoviesArray={trendingMoviesArray} />
-            </ErrorBoundary>
-            <ErrorBoundary>
-              <TopRated topRatedMoviesArray={topRatedMoviesArray} />
-            </ErrorBoundary>
-          </>
-        ) : (
-          //If the search results are not empty, render the search results
-          <ErrorBoundary>
+          {searchResults.length === 0 ? (
+            <>
+              <Trending trendingMovies={trendingMovies} />
+              <TopRated topRatedMovies={topRatedMovies} />
+            </>
+          ) : (
             <ResultsCard searchResults={filteredSearchResults} />
-          </ErrorBoundary>
-        )}
+          )}
+        </ErrorBoundary>
       </Container>
     </>
   );

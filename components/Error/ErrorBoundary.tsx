@@ -27,7 +27,6 @@ const AnnounceError = () => {
   return (
     <ErrorBoundaryWrapper>
       <h3>Beep boop, something went wrong...</h3>
-      <p>Refresh and try a different keyword.</p>
     </ErrorBoundaryWrapper>
   );
 };

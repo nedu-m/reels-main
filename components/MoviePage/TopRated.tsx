@@ -9,23 +9,16 @@ import {
   CardImageLink,
 } from "@components/MoviePage/Card";
 import { SelectButton } from "@components/MoviePage/SelectButton";
-
-type Props = {
-  topRatedMoviesArray: {
-    id: number;
-    title: string;
-    poster_path: string;
-  }[];
-};
+import type { topRatedProps } from "types/movies";
 
 //Define the component and map the data to the component
-export default function TopRated({ topRatedMoviesArray }: Props) {
+export default function TopRated({ topRatedMovies }: topRatedProps) {
   return (
     <ContainerInner>
       <SelectButton title={"Top Rated"} />
       <ContentWrapper>
         <ContentInner>
-          {topRatedMoviesArray.map((movie) => (
+          {topRatedMovies.map((movie) => (
             <CardContainer key={movie.id}>
               <CardImageWrapper>
                 <CardImageInner>

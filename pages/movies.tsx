@@ -24,11 +24,6 @@ export default function Movies({
     setSearchResults(data);
   };
 
-  //Filter the search results to only include movies with a poster
-  const filteredSearchResults = searchResults.filter(
-    (movie) => movie.poster_path !== null
-  );
-
   return (
     <>
       <Container>
@@ -40,16 +35,20 @@ export default function Movies({
 
         <MovieHeader />
         <Search searchProps={searchProps} />
-        <ErrorBoundary>
+        <>
           {searchResults.length === 0 ? (
             <>
-              <Trending trendingMovies={trendingMovies} />
-              <TopRated topRatedMovies={topRatedMovies} />
+              <ErrorBoundary>
+                <Trending trendingMovies={trendingMovies} />
+                <TopRated topRatedMovies={topRatedMovies} />
+              </ErrorBoundary>
             </>
           ) : (
-            <ResultsCard searchResults={filteredSearchResults} />
+            <ErrorBoundary>
+              <ResultsCard searchResults={searchResults} />
+            </ErrorBoundary>
           )}
-        </ErrorBoundary>
+        </>
       </Container>
     </>
   );

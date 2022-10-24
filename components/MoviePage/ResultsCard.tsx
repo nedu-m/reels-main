@@ -19,6 +19,9 @@ type Props = {
 
 //Define the component and map the data to the component
 export default function ResultsCard({ searchResults }: Props) {
+  //get the ids from the search results
+  const ids = searchResults.map((result) => result.id);
+  // console.log(ids);
   //filter the search results to only include movies with a poster
   const filteredSearchResults = searchResults.filter(
     (movie) => movie.poster_path !== null

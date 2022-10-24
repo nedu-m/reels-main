@@ -11,8 +11,9 @@ import {
 import { SelectButton } from "@components/MoviePage/SelectButton";
 import type { trendingProps } from "types/movies";
 
-//Define the component and map the data to the component
 export default function Trending({ trendingMovies }: trendingProps) {
+  //get the ids from the search results
+  const ids = trendingMovies.map((result) => result.id);
   return (
     <ContainerInner>
       <SelectButton title={"Trending"} />

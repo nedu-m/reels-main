@@ -13,7 +13,6 @@ import type { trendingProps } from "types/movies";
 
 export default function Trending({ trendingMovies }: trendingProps) {
   //get the ids from the search results
-  const ids = trendingMovies.map((result) => result.id);
   return (
     <ContainerInner>
       <SelectButton title={"Trending"} />

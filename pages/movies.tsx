@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { GetServerSideProps } from "next";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { getTopRatedMovies, getTrendingMovies } from "@pages/api/api";
 import Seo from "@components/Seo/Seo";
 import MovieHeader from "@components/MoviePage/MovieHeader";

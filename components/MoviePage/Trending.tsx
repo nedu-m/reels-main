@@ -12,7 +12,9 @@ import { SelectButton } from "@components/MoviePage/SelectButton";
 import type { trendingProps } from "types/movies";
 
 export default function Trending({ trendingMovies }: trendingProps) {
-  //get the ids from the search results
+  //get the ids from the trending movies
+  const trendingIds = trendingMovies.map((movie) => movie.id);
+
   return (
     <ContainerInner>
       <SelectButton title={"Trending"} />

@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { GetServerSideProps } from "next";
 import { useState, useMemo } from "react";
 import { getTopRatedMovies, getTrendingMovies } from "@pages/api/api";
-import MovieHeader from "@components/MoviePage/MovieHeader";
-import Search from "@components/MoviePage/Search";
+import SearchHeader from "@components/MoviePage/SearchHeader";
+import SearchBar from "@components/MoviePage/SearchBar";
 import Trending from "@components/MoviePage/Trending";
 import TopRated from "@components/MoviePage/TopRated";
 import ResultsCard from "@components/MoviePage/ResultsCard";
@@ -26,8 +26,8 @@ export default function Movies({
   return (
     <>
       <Container>
-        <MovieHeader />
-        <Search searchProps={searchProps} />
+        <SearchHeader />
+        <SearchBar searchProps={searchProps} />
         <>
           {searchResults.length === 0 ? (
             <>

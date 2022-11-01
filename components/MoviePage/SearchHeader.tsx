@@ -6,7 +6,7 @@ import {
   HeaderSubtitle,
 } from "@components/MoviePage/Header";
 
-export default function MovieHeader() {
+export default function SearchHeader() {
   return (
     <HeaderContainer>
       <HeaderContent>

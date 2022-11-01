@@ -43,7 +43,7 @@ export const SearchBarContainer = styled.div`
   padding-top: 1.6rem;
 `;
 
-export const SearchBar = styled.form`
+export const Search = styled.form`
   margin-top: 0;
   padding: 0;
   position: relative;

@@ -7,7 +7,7 @@ import {
   HeaderContainer,
   HeaderWrapper,
   SearchBarContainer,
-  SearchBar,
+  Search,
   SearchInput,
   SearchButton,
 } from "@components/MoviePage/Header";
@@ -17,7 +17,11 @@ type SearchProps = (
   data: { id: number; title: string; poster_path: string }[]
 ) => void;
 
-export default function Search({ searchProps }: { searchProps: SearchProps }) {
+export default function SearchBar({
+  searchProps,
+}: {
+  searchProps: SearchProps;
+}) {
   //Set the state of the search query
   const [searchQuery, setSearchQuery] = useState("");
   //Set the state of the movie query
@@ -49,7 +53,7 @@ export default function Search({ searchProps }: { searchProps: SearchProps }) {
     <SearchContainer>
       <SearchBarWrapper>
         <SearchBarContainer>
-          <SearchBar>
+          <Search>
             <label htmlFor="search">
               <SearchInput
                 type="text"
@@ -67,7 +71,7 @@ export default function Search({ searchProps }: { searchProps: SearchProps }) {
             >
               <FcSearch size={31} />
             </SearchButton>
-          </SearchBar>
+          </Search>
         </SearchBarContainer>
       </SearchBarWrapper>
     </SearchContainer>

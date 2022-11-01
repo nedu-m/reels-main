@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import {
   ContentWrapper,
@@ -12,6 +13,9 @@ import {
 type Props = {
   searchResults: {
     id: number;
+    overview: string;
+    vote_average: number;
+    release_date: string;
     title: string;
     poster_path: string;
   }[];
@@ -19,9 +23,35 @@ type Props = {
 
 //Define the component and map the data to the component
 export default function ResultsCard({ searchResults }: Props) {
-  //get the ids from the search results
-  const ids = searchResults.map((result) => result.id);
-  // console.log(ids);
+  const router = useRouter();
+
+  //handle click on movie card
+  function displayMovieDetails(
+    id: number,
+    title: string,
+    poster: string,
+    overview: string,
+    vote_average: number,
+    release_date: string
+  ) {
+    router.push(
+      {
+        pathname: "/movie_details/[id]",
+        query: {
+          ...router.query,
+          id,
+          title,
+          poster,
+          overview,
+          vote_average,
+          release_date,
+        },
+      },
+      //as- prop is used to change the url in the browser
+      `/movie_details/${title.replace(/\s+/g, "-").toLowerCase()}`
+    );
+  }
+
   //filter the search results to only include movies with a poster
   const filteredSearchResults = searchResults.filter(
     (movie) => movie.poster_path !== null
@@ -34,7 +64,18 @@ export default function ResultsCard({ searchResults }: Props) {
             <CardContainer key={movie.id}>
               <CardImageWrapper>
                 <CardImageInner>
-                  <CardImageLink>
+                  <CardImageLink
+                    onClick={() =>
+                      displayMovieDetails(
+                        movie.id,
+                        movie.title,
+                        movie.poster_path,
+                        movie.overview,
+                        movie.vote_average,
+                        movie.release_date
+                      )
+                    }
+                  >
                     <Image
                       src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                       alt={movie.title}

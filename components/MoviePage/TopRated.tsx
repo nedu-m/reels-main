@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import {
   ContentWrapper,
@@ -13,6 +14,35 @@ import type { topRatedProps } from "types/movies";
 
 //Define the component and map the data to the component
 export default function TopRated({ topRatedMovies }: topRatedProps) {
+  const router = useRouter();
+
+  //handle click on movie card
+  function displayMovieDetails(
+    id: number,
+    title: string,
+    poster: string,
+    overview: string,
+    vote_average: number,
+    release_date: string
+  ) {
+    router.push(
+      {
+        pathname: "/movie_details/[id]",
+        query: {
+          ...router.query,
+          id,
+          title,
+          poster,
+          overview,
+          vote_average,
+          release_date,
+        },
+      },
+      //as- prop is used to change the url in the browser
+      `/movie_details/${title.replace(/\s+/g, "-").toLowerCase()}`
+    );
+  }
+
   return (
     <ContainerInner>
       <SelectButton title={"Top Rated"} />
@@ -22,7 +52,18 @@ export default function TopRated({ topRatedMovies }: topRatedProps) {
             <CardContainer key={movie.id}>
               <CardImageWrapper>
                 <CardImageInner>
-                  <CardImageLink>
+                  <CardImageLink
+                    onClick={() =>
+                      displayMovieDetails(
+                        movie.id,
+                        movie.title,
+                        movie.poster_path,
+                        movie.overview,
+                        movie.vote_average,
+                        movie.release_date
+                      )
+                    }
+                  >
                     <Image
                       src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                       alt={movie.title}
@@ -33,7 +74,6 @@ export default function TopRated({ topRatedMovies }: topRatedProps) {
                     <p>{`https://image.tmdb.org/t/p/w500${movie.poster_path}`}</p>
                   </CardImageLink>
                 </CardImageInner>
-                <p>{movie.title}</p>
               </CardImageWrapper>
             </CardContainer>
           ))}

@@ -9,23 +9,13 @@ import {
   CardImageInner,
   CardImageLink,
 } from "@components/MoviePage/Card";
-
-type Props = {
-  searchResults: {
-    id: number;
-    overview: string;
-    vote_average: number;
-    release_date: string;
-    title: string;
-    poster_path: string;
-  }[];
-};
+import type { resultsProps } from "types/movies";
 
 //Define the component and map the data to the component
-export default function ResultsCard({ searchResults }: Props) {
+export default function ResultsCard({ searchResults }: resultsProps) {
   const router = useRouter();
 
-  //handle click on movie card
+  //handle the click event and pass the query to the url
   function displayMovieDetails(
     id: number,
     title: string,

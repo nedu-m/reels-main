@@ -28,3 +28,14 @@ export type trendingProps = {
     overview: string;
   }[];
 };
+
+export type resultsProps = {
+  searchResults: {
+    id: number;
+    title: string;
+    poster_path: string;
+    vote_average: number;
+    release_date: string;
+    overview: string;
+  }[];
+};

@@ -14,7 +14,14 @@ import {
 
 //set search props type to id, title, poster_path as void function
 type SearchProps = (
-  data: { id: number; title: string; poster_path: string }[]
+  data: {
+    id: number;
+    title: string;
+    poster_path: string;
+    overview: string;
+    vote_average: number;
+    release_date: string;
+  }[]
 ) => void;
 
 export default function SearchBar({

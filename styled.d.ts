@@ -14,5 +14,8 @@ declare module "styled-components" {
       md: string;
       lg: string;
     };
+    images: {
+      movie: string;
+    };
   }
 }

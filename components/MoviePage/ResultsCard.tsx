@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import styled from "styled-components";
 import {
   ContentWrapper,
   ContentInner,
@@ -10,6 +9,7 @@ import {
   CardImageLink,
 } from "@components/MoviePage/Card";
 import type { resultsProps } from "types/movies";
+import styled from "styled-components";
 
 //Define the component and map the data to the component
 export default function ResultsCard({ searchResults }: resultsProps) {
@@ -24,11 +24,11 @@ export default function ResultsCard({ searchResults }: resultsProps) {
     vote_average: number,
     release_date: string
   ) {
+    //Pass the query to the url, check the console.log to see the query
     router.push(
       {
         pathname: "/movie_details/[id]",
         query: {
-          ...router.query,
           id,
           title,
           poster,
@@ -37,20 +37,21 @@ export default function ResultsCard({ searchResults }: resultsProps) {
           release_date,
         },
       },
-      //as- prop is used to change the url in the browser
+      //as - prop is used to change the url in the browser
       `/movie_details/${title.replace(/\s+/g, "-").toLowerCase()}`
     );
   }
 
-  //filter the search results to only include movies with a poster
-  const filteredSearchResults = searchResults.filter(
-    (movie) => movie.poster_path !== null
+  //filter the data to remove movies with no poster,
+  const filteredResults = searchResults.filter(
+    (result) => result.poster_path !== null
   );
+
   return (
     <ContainerInner>
       <ContentWrapper>
         <ContentInner>
-          {filteredSearchResults.map((movie) => (
+          {filteredResults.map((movie) => (
             <CardContainer key={movie.id}>
               <CardImageWrapper>
                 <CardImageInner>
@@ -76,7 +77,6 @@ export default function ResultsCard({ searchResults }: resultsProps) {
                     <p>{`https://image.tmdb.org/t/p/w500${movie.poster_path}`}</p>
                   </CardImageLink>
                 </CardImageInner>
-                <p>{movie.title}</p>
               </CardImageWrapper>
             </CardContainer>
           ))}

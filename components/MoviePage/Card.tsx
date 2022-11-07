@@ -40,8 +40,7 @@ export const ContentInner = styled.div`
   padding-bottom: 20px;
   width: 100%;
   max-width: 98.6vw;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow: scroll;
   white-space: nowrap;
   scrollbar-width: none;
   height: auto;

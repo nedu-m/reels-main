@@ -18,6 +18,9 @@ interface MyTheme extends DefaultTheme {
     md: string;
     lg: string;
   };
+  images: {
+    movie: string;
+  };
 }
 
 const theme: MyTheme = {
@@ -33,6 +36,9 @@ const theme: MyTheme = {
     sm: "320px",
     md: "768px",
     lg: "1024px",
+  },
+  images: {
+    movie: "https://image.tmdb.org/t/p/w500",
   },
 };
 

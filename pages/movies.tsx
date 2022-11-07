@@ -1,14 +1,34 @@
 import styled from "styled-components";
 import { GetServerSideProps } from "next";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { getTopRatedMovies, getTrendingMovies } from "@pages/api/api";
+import type { Movie, topRatedProps, trendingProps } from "types/movies";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+//Components
 import SearchHeader from "@components/MoviePage/SearchHeader";
 import SearchBar from "@components/MoviePage/SearchBar";
 import Trending from "@components/MoviePage/Trending";
 import TopRated from "@components/MoviePage/TopRated";
 import ResultsCard from "@components/MoviePage/ResultsCard";
 import ErrorBoundary from "@components/Error/ErrorBoundary";
-import type { Movie, topRatedProps, trendingProps } from "types/movies";
+
+const DynamicTrending = dynamic(
+  () => import("@components/MoviePage/Trending"),
+  {
+    suspense: true,
+    ssr: true,
+  }
+);
+
+const DynamicTopRated = dynamic(
+  () => import("@components/MoviePage/TopRated"),
+  {
+    suspense: true,
+    ssr: true,
+  }
+);
 
 //Define the component and map the data to the component
 export default function Movies({
@@ -32,8 +52,13 @@ export default function Movies({
           {searchResults.length === 0 ? (
             <>
               <ErrorBoundary>
-                <Trending trendingMovies={trendingMovies} />
-                <TopRated topRatedMovies={topRatedMovies} />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <DynamicTrending trendingMovies={trendingMovies} />
+                </Suspense>
+
+                <Suspense fallback={<div>Loading...</div>}>
+                  <DynamicTopRated topRatedMovies={topRatedMovies} />
+                </Suspense>
               </ErrorBoundary>
             </>
           ) : (

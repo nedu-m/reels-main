@@ -1,6 +1,15 @@
 import styled from "styled-components";
 import Image from "next/image";
 
+type Props = {
+  title: string | string[] | undefined;
+  poster: string | string[] | undefined;
+  overview: string | string[] | undefined;
+  vote_average: string | string[] | undefined;
+  release_date: string | string[] | undefined;
+  goBack: () => void;
+};
+
 const MovieDetails = ({
   title,
   poster,
@@ -8,7 +17,7 @@ const MovieDetails = ({
   vote_average,
   release_date,
   goBack,
-}: any) => {
+}: Props) => {
   return (
     <>
       <Container>
@@ -17,7 +26,7 @@ const MovieDetails = ({
             <ImageInner>
               <Image
                 src={`https://image.tmdb.org/t/p/w500/${poster}`}
-                alt={title}
+                alt="movie poster"
                 width={500}
                 height={750}
                 placeholder="empty"

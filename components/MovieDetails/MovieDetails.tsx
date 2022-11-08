@@ -20,6 +20,7 @@ const MovieDetails = ({
                 alt={title}
                 width={500}
                 height={750}
+                placeholder="empty"
               />
             </ImageInner>
           </ImageWrapper>
@@ -83,9 +84,6 @@ const ImageWrapper = styled.div`
   border-radius: 8px;
 `;
 const ImageInner = styled.div`
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-
   width: 100%;
   height: 100%;
   min-height: 100%;

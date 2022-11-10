@@ -46,7 +46,7 @@ Once you have access to the environment variables you'll need, deploy the exampl
 
 - The `pages/api` directory is for Movie API routes. You can use this directory to create API routes for your movie app. Learn more about [API routes](https://nextjs.org/docs/api-routes/introduction) in Next.js.
 
-- This example uses [SWR](https://swr.vercel.app/) for data fetching. You can replace it with any other data fetching library.
+- This example uses [getServerSideProps](https://nextjs.org/docs/) for data fetching. You can replace it with any other data fetching library.
 
 - This example uses [TypeScript](https://www.typescriptlang.org/). You can replace it with any other language, such as [Flow](https://flow.org/).
 

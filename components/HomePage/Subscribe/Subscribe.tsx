@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { supabase } from "@helper/supabase";
 import SubscribeData from "./data";
 import toast, { Toaster } from "react-hot-toast";
@@ -19,49 +19,24 @@ import {
 } from "./subscribeStyled";
 
 const Subscribe = () => {
-  const [email, setEmail] = useState("");
-  const [fullName, setFullName] = useState("");
+  const emailRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
 
-  //set notifcation toasts for success and error
-  const notifySuccess = () =>
-    toast.success("Check your email for the confirmation link!");
-  const notifyError = () =>
-    toast.error("Invalid email address. Please try again!");
-
-  //Handle the form submission
-  const handleSubmit = async (e: any) => {
+  const handlesubscribe = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-
-    //Check if the email is a valid email address - using regex
-    const isEmail = /\S+@\S+\.\S+/.test(email);
-
-    //Check if the email is valid, send a toast notification if not
-    if (!isEmail) {
-      notifyError();
-      setLoading(false);
-      return;
-    }
-
-    const { error } = await supabase.auth.signUp({
-      email: email,
-      password: "password",
-    });
-    if (error) {
-      alert(error.message);
+    const email = emailRef.current?.value;
+    if (email) {
+      const { error } = await supabase.from("subscribers").insert({ email });
+      if (error) {
+        toast.error("Something went wrong");
+      } else {
+        toast.success("You have been subscribed");
+      }
     } else {
-      notifySuccess();
+      toast.error("Please enter your email");
     }
-
     setLoading(false);
-    clearInput();
-  };
-
-  //clear input after submit
-  const clearInput = () => {
-    setEmail("");
-    setFullName("");
   };
 
   return (
@@ -70,29 +45,26 @@ const Subscribe = () => {
         {SubscribeData.map((item, index) => {
           return (
             <SubscribeInner key={index}>
-              <SubscribeImage src={item.image} />
+              <SubscribeImage src={item.image} alt="Subscribe" />
               <SubscribeTitle>{item.title}</SubscribeTitle>
               <SubscribeDescription>{item.description}</SubscribeDescription>
-              <SubscribeForm onSubmit={handleSubmit}>
-                <SubscribeInput
-                  type="text"
-                  placeholder="Full Name"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                />
+              <SubscribeForm>
                 <SubscribeInput
                   type="email"
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  ref={emailRef}
                 />
-                <SubscribeButton type="submit" disabled={loading}>
-                  {loading ? "Sending a link..." : "Subscribe"}
+                <SubscribeButton
+                  type="submit"
+                  disabled={loading}
+                  onClick={handlesubscribe}
+                >
+                  {loading ? "Loading..." : "Subscribe"}
                 </SubscribeButton>
               </SubscribeForm>
               <SubscribePrivacy>
                 <SubscribePrivacyText>
-                  By subscribing, you agree to our
+                  By subscribing you agree to our
                 </SubscribePrivacyText>
                 <SubscribePrivacyLink href="#">
                   Privacy Policy
@@ -101,8 +73,8 @@ const Subscribe = () => {
             </SubscribeInner>
           );
         })}
-        <Toaster />
       </SubscribeWrapper>
+      <Toaster />
     </Container>
   );
 };

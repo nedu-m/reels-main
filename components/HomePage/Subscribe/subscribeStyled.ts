@@ -86,11 +86,8 @@ export const SubscribeButton = styled.button`
 export const SubscribePrivacy = styled.div`
   display: flex;
   place-content: center;
-  max-width: 32rem;
+  flex-wrap: wrap;
   margin: 0 auto;
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    padding: 0 1rem;
-  }
 `;
 
 export const SubscribePrivacyText = styled.p`
@@ -106,6 +103,7 @@ export const SubscribePrivacyLink = styled.a`
   font-size: 1.125rem;
   line-height: 1.75;
   margin: 0;
+  padding-left: 0.5rem;
   text-decoration: underline;
 
   &:hover {

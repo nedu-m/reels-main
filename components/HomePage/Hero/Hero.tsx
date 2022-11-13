@@ -17,8 +17,10 @@ import {
   Button,
   ButtonII,
 } from "@components/HomePage/Buttons/Button";
+import { trendingProps } from "types/movies";
 
-const Hero = () => {
+const Hero = ({ trendingMovies }: trendingProps) => {
+  console.log(trendingMovies);
   return (
     <Container>
       <InnerContainer>
@@ -41,17 +43,20 @@ const Hero = () => {
 
         <HeroListing>
           <CardContainer>
-            {CardData.map((card) => (
-              <CardWrapper key={card.id}>
+            {/* {trendingMovies.map((movies) => (
+              <CardWrapper key={movies.id}>
                 <CardInner>
                   <CardContent>
                     <CardImageWrapper>
-                      <CardImage src={card.src} alt={card.alt} />
+                      <CardImage
+                        src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
+                        alt={movies.title}
+                      />
                     </CardImageWrapper>
                   </CardContent>
                 </CardInner>
               </CardWrapper>
-            ))}
+            ))} */}
           </CardContainer>
         </HeroListing>
       </InnerContainer>

@@ -19,11 +19,11 @@ const NavLinks = [
   },
   {
     name: "Sitcoms",
-    href: "/",
+    href: "/404",
   },
   {
     name: "TV Shows",
-    href: "/",
+    href: "/404",
   },
 ];
 

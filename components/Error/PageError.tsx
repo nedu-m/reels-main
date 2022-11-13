@@ -68,7 +68,7 @@ const NotFound = () => {
         <title>Reels</title>
       </Head>
       <Title>404</Title>
-      <Text>Omo, Page not found</Text>
+      <Text>Page not found</Text>
       <LinkContainer>
         <LinkTitle href="/">Go back to home page</LinkTitle>
         <LinkText>If you think this is a mistake, contact us.</LinkText>

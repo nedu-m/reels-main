@@ -6,11 +6,8 @@ import type { Movie, topRatedProps, trendingProps } from "types/movies";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
-//Components
 import SearchHeader from "@components/MoviePage/SearchHeader";
 import SearchBar from "@components/MoviePage/SearchBar";
-import Trending from "@components/MoviePage/Trending";
-import TopRated from "@components/MoviePage/TopRated";
 import ResultsCard from "@components/MoviePage/ResultsCard";
 import ErrorBoundary from "@components/Error/ErrorBoundary";
 
@@ -30,11 +27,10 @@ const DynamicTopRated = dynamic(
   }
 );
 
-//Define the component and map the data to the component
 export default function Movies({
   topRatedMovies,
   trendingMovies,
-}: topRatedProps & trendingProps) {
+}: topRatedProps & trendingProps): JSX.Element {
   //Set the results of the search query
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
 
@@ -102,3 +98,5 @@ const Container = styled.main`
     grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
   }
 `;
+
+const LoadingSpinner = styled.div``;

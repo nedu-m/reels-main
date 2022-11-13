@@ -20,7 +20,7 @@ const TitleIntro = styled.p`
   font-size: 0.813rem;
   line-height: 1rem;
   text-transform: uppercase;
-  color: gray;
+  color: #3a3a3a;
   letter-spacing: 1px;
   font-weight: 600;
 `;

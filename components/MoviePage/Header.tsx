@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const HeaderContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr;
@@ -79,6 +80,7 @@ export const SearchButton = styled.button`
   width: auto;
   height: 46.5px;
   padding: 1rem 25px;
+  margin: 0 0 0 -2.5rem;
   border: none;
   border-radius: 30px;
   position: absolute;

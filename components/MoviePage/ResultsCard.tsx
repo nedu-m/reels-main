@@ -12,7 +12,9 @@ import type { resultsProps } from "types/movies";
 import styled from "styled-components";
 
 //Define the component and map the data to the component
-export default function ResultsCard({ searchResults }: resultsProps) {
+export default function ResultsCard({
+  searchResults,
+}: resultsProps): JSX.Element {
   const router = useRouter();
 
   //handle the click event and pass the query to the url

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import CardData from "./data";
 
 import {
   CardContainer,

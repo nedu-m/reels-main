@@ -20,7 +20,6 @@ import {
 import { trendingProps } from "types/movies";
 
 const Hero = ({ trendingMovies }: trendingProps) => {
-  console.log(trendingMovies);
   return (
     <Container>
       <InnerContainer>
@@ -43,7 +42,7 @@ const Hero = ({ trendingMovies }: trendingProps) => {
 
         <HeroListing>
           <CardContainer>
-            {/* {trendingMovies.map((movies) => (
+            {trendingMovies.map((movies) => (
               <CardWrapper key={movies.id}>
                 <CardInner>
                   <CardContent>
@@ -51,12 +50,15 @@ const Hero = ({ trendingMovies }: trendingProps) => {
                       <CardImage
                         src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
                         alt={movies.title}
+                        width={500}
+                        height={750}
+                        placeholder="empty"
                       />
                     </CardImageWrapper>
                   </CardContent>
                 </CardInner>
               </CardWrapper>
-            ))} */}
+            ))}
           </CardContainer>
         </HeroListing>
       </InnerContainer>
@@ -105,7 +107,6 @@ const HeroListing = styled.div`
   margin-top: -3rem;
   width: 100%;
   @media (min-width: ${(props) => props.theme.breakpoints.lg}) {
-    padding: 1.5rem;
     margin: 2rem 0 0 -1.5rem;
   }
 `;

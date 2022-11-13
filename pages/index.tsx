@@ -16,7 +16,6 @@ export default function Home({ trendingMovies }: trendingProps) {
   );
 }
 
-//trim trending movies to 6
 export async function getServerSideProps() {
   const trendingMovies = await getTrendingMovies();
   return {
@@ -25,14 +24,3 @@ export async function getServerSideProps() {
     },
   };
 }
-
-// export default function Home() {
-//   return (
-//     <>
-//       <Hero />
-//       <Features />
-//       <Services />
-//       <Subscribe />
-//     </>
-//   );
-// }

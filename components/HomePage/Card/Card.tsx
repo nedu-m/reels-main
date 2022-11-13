@@ -18,7 +18,6 @@ export const CardWrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-bottom: 1.5rem;
 `;
 
 export const CardInner = styled.div`

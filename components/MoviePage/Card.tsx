@@ -88,6 +88,7 @@ export const CardImageWrapper = styled.div`
   height: calc(150px * 1.5);
   background: #dbdbdb;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 export const CardImageInner = styled.div`
